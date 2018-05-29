@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -11,7 +12,6 @@
 
 <!-- Plugin Stylesheets first to ease overrides -->
 <link rel="stylesheet" type="text/css" href="/admin/plugins/colorpicker/colorpicker.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admin/custom-plugins/wizard/wizard.css" media="screen">
 
 <!-- Required Stylesheets -->
 <link rel="stylesheet" type="text/css" href="/admin/bootstrap/css/bootstrap.min.css" media="screen">
@@ -24,6 +24,7 @@
 
 <!-- Demo Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/admin/css/demo.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/admin/css/page.css" media="screen">
 
 <!-- jQuery-UI Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/admin/jui/css/jquery.ui.all.css" media="screen">
@@ -33,115 +34,181 @@
 <link rel="stylesheet" type="text/css" href="/admin/css/mws-theme.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admin/css/themer.css" media="screen">
 
-<title>MWS Admin - Dashboard</title>
+<title>@yield('title')</title>
+<style type="text/css">
+    .page ul,.page li{
+        list-style-type: none;
+    }
 
+    .page li{
+        float: left;
+        height: 20px;
+        padding: 0 10px;
+        display: block;
+        font-size: 12px;
+        line-height: 20px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        background-color: #444444;
+        color: #fff;
+        text-decoration: none;
+        border-right: 1px solid #232323;
+        border-left: 1px solid #666666;
+        border-right: 1px solid rgba(0, 0, 0, 0.5);
+        border-left: 1px solid rgba(255, 255, 255, 0.15);
+        -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5), inset 0px 1px 0px rgba(255, 255, 255, 0.15);
+        -moz-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5), inset 0px 1px 0px rgba(255, 255, 255, 0.15);
+        box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5), inset 0px 1px 0px rgba(255, 255, 255, 0.15);
+    }
+
+    .page a{
+        color:#fff;
+    }
+
+    .page .active{
+        background: #c5d52b;
+        color:#323232;
+    }
+
+    .page .disabled{
+            color: #666666;
+            cursor: default;
+    }
+      #mydiv{
+        float:right;
+    }
+
+</style>
 </head>
 
 <body>
 
-    <!-- Themer (Remove if not needed) -->
-    <div id="mws-themer">
-        <div id="mws-themer-css-dialog">
-            <form class="mws-form">
-                <div class="mws-form-row">
-                    <div class="mws-form-item">
-                        <textarea cols="auto" rows="auto" readonly="readonly"></textarea>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- Themer End -->
 
     <!-- Header -->
     <div id="mws-header" class="clearfix">
-
+    
         <!-- Logo Container -->
         <div id="mws-logo-container">
-
+        
             <!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
             <div id="mws-logo-wrap">
-                <img src="/admin/images/mws-logo.png" alt="mws admin">
+                <img src="/admin/images/logo.png" alt="mws admin">
             </div>
         </div>
-
+        
         <!-- User Tools (notifications, logout, profile, change password) -->
         <div id="mws-user-tools" class="clearfix">
-            <!-- User Information and functions section -->
+            
+           
+            <!-- 用户信息 and functions section -->
             <div id="mws-user-info" class="mws-inset">
-
-                <!-- User Photo -->
-                <div id="mws-user-photo">
-                    <img src="/admin/example/profile.jpg" alt="User Photo">
-                </div>
-
+            
+                <!-- 用户头像 -->
+                @if( session() )
+            
+            <div id="mws-user-photo">
+                <img src="{{$user = session('adminUser')->profile}}" alt="">
+            </div>
+            @else
+            <div id="mws-user-photo">
+                <img src="/admin/example/profile.jpg" alt="User Photo">
+            </div>
+            @endif 
+                
                 <!-- Username and Functions -->
                 <div id="mws-user-functions">
                     <div id="mws-username">
-                        Hello, John Doe
+                    @if( session() )
+                       {{'你好'.','.$user = session('adminUser')->username}}
+                     @else
+                        Hello, 用户
+                     @endif
                     </div>
                     <ul>
                         <li><a href="#">头像</a></li>
-                        <li><a href="#">修改密码</a></li>
-                        <li><a href="index.html">退出</a></li>
+                        <li><a href="/admin/resetpwd">修改密码</a></li>
+                        <li><a href="/admin/logout">退出</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-
+    
     <!-- Start Main Wrapper -->
     <div id="mws-wrapper">
-
+    
         <!-- Necessary markup, do not remove -->
         <div id="mws-sidebar-stitch"></div>
         <div id="mws-sidebar-bg"></div>
-
+        
         <!-- Sidebar Wrapper -->
         <div id="mws-sidebar">
-
+        
             <!-- Hidden Nav Collapse Button -->
             <div id="mws-nav-collapse">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-
+            
             <!-- Searchbox -->
             <div id="mws-searchbox" class="mws-inset">
                 <form action="typography.html">
                     <input type="text" class="mws-search-input" placeholder="Search...">
-                    <button type="submit" class="mws-search-submit"><i class="icon-search"></i></button>
+                    <button type="submit" onclick="return false"><i class="icon-search"></i></button>
                 </form>
             </div>
-
+            
             <!-- Main Navigation -->
             <div id="mws-navigation">
                 <ul>
-                    <li>
+                    
+                    <li class="active">
+                        <a href="#"><i class="icon-list"></i> 文章管理</a>
+                        <ul>
+                            <li><a href="/admin/articles">文章列表</a></li>
+                            <li><a href="/admin/articles/create">文章添加</a></li>
+                        </ul>
+                    </li>
+
+                     <li class="active">
                         <a href="#"><i class="icon-list"></i>栏目管理</a>
                         <ul>
                             <li><a href="/admin/column">栏目列表</a></li>
                             <li><a href="/admin/column/create">栏目添加</a></li>
                         </ul>
                     </li>
+
+                    <li class="active">
+                        <a href="#"><i class="icon-user"></i> 用户管理</a>
+                        <ul>
+                            <li><a href="/admin/users">用户列表</a></li>
+                            <li><a href="/admin/users/create">用户添加</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
-
-        <!-- Main Container Start -->
+        
+        <!-- 内容开始-->
         <div id="mws-container" class="clearfix">
-
-            <!-- Inner Container Start -->
+            
+            <!-- 内容开始 -->
             <div class="container">
-                @section('content')
-                @show
+            @section('content')
+            @show
             </div>
-            <!-- Inner Container End -->
-
+            <!-- 内容结束-->
+                       
+            <!-- Footer -->
+            <div id="mws-footer">
+                Copyright Your Website 2012. All Rights Reserved.
+            </div>
+            
         </div>
-        <!-- Main Container End -->
-
+        <!-- 内容结束 -->
+        
     </div>
 
     <!-- JavaScript Plugins -->
@@ -156,18 +223,8 @@
     <script src="/admin/jui/js/jquery.ui.touch-punch.js"></script>
 
     <!-- Plugin Scripts -->
-    <script src="/admin/plugins/datatables/jquery.dataTables.min.js"></script>
-    <!--[if lt IE 9]>
-    <script src="/admin/js/libs/excanvas.min.js"></script>
-    <![endif]-->
-    <script src="/admin/plugins/flot/jquery.flot.min.js"></script>
-    <script src="/admin/plugins/flot/plugins/jquery.flot.tooltip.min.js"></script>
-    <script src="/admin/plugins/flot/plugins/jquery.flot.pie.min.js"></script>
-    <script src="/admin/plugins/flot/plugins/jquery.flot.stack.min.js"></script>
-    <script src="/admin/plugins/flot/plugins/jquery.flot.resize.min.js"></script>
     <script src="/admin/plugins/colorpicker/colorpicker-min.js"></script>
     <script src="/admin/plugins/validate/jquery.validate-min.js"></script>
-    <script src="/admin/custom-plugins/wizard/wizard.min.js"></script>
 
     <!-- Core Script -->
     <script src="/admin/bootstrap/js/bootstrap.min.js"></script>
@@ -177,7 +234,6 @@
     <script src="/admin/js/core/themer.js"></script>
 
     <!-- Demo Scripts (remove if not needed) -->
-    <script src="/admin/js/demo/demo.dashboard.js"></script>
 
 </body>
 </html>

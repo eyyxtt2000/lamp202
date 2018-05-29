@@ -36,4 +36,18 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+       public function usersdetail()
+        {
+        // 一对一
+                return $this->hasOne('App\Models\Admin\Usersdetail','uid');
+        }
+        //一对多
+    
+
+    public function uarticles()
+    {
+        // 一对一
+        return $this->hasOne('App\Models\Admin\Articles','uid');
+    }
 }

@@ -24,3 +24,6 @@
         </div>
     </div>
 @endsection
+@section('title')
+    英雄联盟
+@endsection  
