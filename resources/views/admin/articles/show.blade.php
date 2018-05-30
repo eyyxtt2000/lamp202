@@ -1,7 +1,7 @@
-@extends('Admin.layout.index')     
-@section('content')  
-        
-        
+@extends('admin.layout.index')
+@section('content')
+
+
             <!-- 内容开始 -->
             <div class="container">
                 <div class="">
@@ -12,11 +12,11 @@
                 <img src="/d/images/logo.png" alt="mws admin">
             </div>
             <!-- 内容结束-->
-                       
-@endsection   
-           
-  
+
+@endsection
+
+
 
 @section('title')
     英雄联盟
-@endsection               
+@endsection

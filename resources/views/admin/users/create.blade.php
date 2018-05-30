@@ -1,5 +1,5 @@
-@extends('Admin.layout.index')     
-@section('content') 
+@extends('admin.layout.index')
+@section('content')
 <!-- 显示错误的信息-->
 @if (count($errors) > 0)
     <div class="mws-form-message error">
@@ -20,38 +20,27 @@
         {{ csrf_field() }}
 
             <div class="mws-form-block">
-
-             
-                    <div class="mws-form-row ">
-                                    <label class="mws-form-label">状态</label>
-                                    <div class="mws-form-item">
-                                        <select name="status" class="large">
-                                            <option value="1">激活</option>
-                                            <option value="0">未激活</option>
-                                           
-                                        </select>
-                                   
-                                </div>
-               
-
-                
-<ul class="mws-form-list inline">
-    身份:
-    <li><input type="radio" checked="checked" name="identity" value='2'> <label>用户</label></li>
-    <li><input type="radio" name="identity" value='1'> <label>管理员</label></li>
-  
-</ul>
-                
+                <div class="mws-form-row" style="width: 800px;">
+                    <label class="mws-form-label">状态</label>
+                    <div class="mws-form-item">
+                        <select name="status" class="large">
+                            <option value="1">激活</option>
+                            <option value="0">未激活</option>
+                        </select>
+                    </div>
+                    <ul class="mws-form-list inline" style="margin-bottom: -10px;">
+                        身份:
+                        <li><input type="radio" checked="checked" name="identity" value='2'> <label>用户</label></li>
+                        <li><input type="radio" name="identity" value='1'> <label>管理员</label></li>
+                    </ul>
+                </div>
                 <div class="mws-form-row">
                     <label class="mws-form-label">用户名:</label>
                     <div class="mws-form-item">
                         <input type="text" name="username" class="small" placeholder="用户名" value="{{old('username')}}">
                     </div>
                 </div>
-
-                
-
-                  <div class="mws-form-row">
+                <div class="mws-form-row">
                     <label class="mws-form-label">性别:</label>
                     <div class="mws-form-item">
                         <input type="text" name="sex" class="small" placeholder="性别" value="{{old('sex')}}">
@@ -71,8 +60,8 @@
                         <input type="password" name="repassword" class="small" placeholder="确认密码">
                     </div>
                 </div>
-                
-              
+
+
 
                 <div class="mws-form-row">
                     <label class="mws-form-label">手机:</label>
@@ -94,13 +83,13 @@
                     </div>
                 </div>
 
-                <div class="mws-form-row">
+                <div class="mws-form-row" style="width: 800px;">
                     <label class="mws-form-label">头像:</label>
                     <div class="mws-form-item">
                         <input type="file" name="profile" class="small">
                     </div>
                 </div>
-              
+
             </div>
 
             <div class="mws-button-row">
@@ -115,12 +104,11 @@
     </div>
         </div>
 
-   
-@endsection   
-           
-  
+
+@endsection
+
+
 
 @section('title')
     英雄联盟
-@endsection          
-           
+@endsection

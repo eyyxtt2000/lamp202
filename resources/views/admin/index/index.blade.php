@@ -1,5 +1,5 @@
-@extends('Admin.layout.index')     
-@section('content') 
+@extends('admin.layout.index')
+@section('content')
 
        <style type="text/css">
             .result-wrap {
@@ -7,13 +7,13 @@
             border-bottom: 1px solid #e5e5e5;
 
         }
-       
+
         li {
             list-style: none;
-           
+
         }
-        
-       </style>             
+
+       </style>
 <div class="result-wrap">
             <div class="result-title">
                 <h1>系统基本信息</h1>
@@ -49,12 +49,12 @@
         </div>
 
 
-  
 
-@endsection   
-           
+
+@endsection
+
 
 
 @section('title')
     英雄联盟
-@endsection   
+@endsection

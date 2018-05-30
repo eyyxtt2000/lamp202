@@ -1,6 +1,6 @@
-@extends('Admin.layout.index')     
-@section('content')  
-            
+@extends('admin.layout.index')
+@section('content')
+
             <!-- 内容开始 -->
             <div class="container">
                 @if(session('error'))
@@ -14,7 +14,7 @@
                      {{ session('success') }}
                 </div>
                 @endif
-               
+
                <div class="mws-panel grid_8">
                   <div class="mws-panel-header">
                     <span>
@@ -31,15 +31,15 @@
                             <option value="100">100</option></select>条</label>
                       </div>
                       <div class="dataTables_filter" id="DataTables_Table_1_filter">
-                       
+
                             <form action="/admin/articles" method="get" >
                                <label>搜索: <input type="text" name="for" aria-controls="DataTables_Table_1">
                                <input type="submit"  value="提交" >
                             </label></div>
                          </form>
-                         
-    
-                         
+
+
+
                       <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
                         <tr>
                             <td>ID</td>
@@ -50,9 +50,9 @@
                             <td>操作</td>
                         </tr>
                         <tbody role="alert" aria-live="polite" aria-relevant="all">
-                        
+
                           @foreach($data as $k=>$v)
-                        
+
 
                         <tr>
                             <td>{{$v->id}}</td>
@@ -78,19 +78,19 @@
                                 </form>
 
                                <!--  <a href="/" class="btn btn-warning">修改</a> -->
-                                
+
                     <form action="/admin/articles/{{$v->id}}/edit" method="get"  style="display: inline;>
                         {{ csrf_field() }}
-                       
-                        
+
+
                         <input type="submit" class="btn btn-warning"  value="修改">
                      </form>
-               
+
                                 <a href="/admin/articles/{{$v->id}}" class="btn btn-info">查看文章内容</a>
                             </td>
                         </tr>
                           @endforeach
-                         
+
                         </tbody>
                       </table>
                         <div class="page dataTables_paginate paging_full_numbers">
@@ -101,13 +101,10 @@
                 </div>
             </div>
             <!-- 内容结束-->
-                   <div id="mydiv">
-                <img src="/d/images/logo.png" alt="mws admin">
-            </div>    
-   @endsection   
-           
-  
+   @endsection
+
+
 
 @section('title')
     英雄联盟
-@endsection   
+@endsection

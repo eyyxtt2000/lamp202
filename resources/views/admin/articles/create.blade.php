@@ -1,6 +1,6 @@
-@extends('Admin.layout.index')     
-@section('content')  
-        
+@extends('admin.layout.index')
+@section('content')
+
             <!-- 内容开始 -->
             <div class="container">
                 <div class="mws-panel grid_8">
@@ -39,20 +39,17 @@
                                 <input type="submit" value="添加" class="btn btn-success">
                                 <input type="reset" value="重置" class="btn btn-info">
                             </div>
-              <div id="mydiv">
-                <img src="/d/images/logo.png" alt="mws admin">
-            </div>
                         </form>
-                    </div>      
+                    </div>
                 </div>
             </div>
             <!-- 内容结束-->
-                       
-   
-@endsection   
-           
-  
+
+
+@endsection
+
+
 
 @section('title')
     英雄联盟
-@endsection    
+@endsection
