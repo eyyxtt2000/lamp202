@@ -18,7 +18,6 @@ class IndexController extends Controller
     public function index()
     {
        //加载后台页面
-      
        return view('admin.index.index');
     }
 
@@ -29,28 +28,28 @@ class IndexController extends Controller
      */
     public function writepwd(Request $request)
     {
-       
+
         if( session() ){
-             $id = session('adminUser')->id;
-         } 
+            $id = session('adminUser')->id;
+         }
 
         /*  $this->validate($request,[
-            
+
             'password' => 'required|between:6,12',
             'repassword' => 'required|same:password',
-           
+
 
             ],[
-           
+
             'password.required' => '密码必须输入',
             'repassword.required' => '确认密码必须输入',
             'password.between' => '密码格式不正确',
             'repassword.same' => '密码不一致',
-           
+
             ]);*/
 
-       return view('admin.resetpwd.resetpwd',['id'=>$id,'title'=>'修改密码']);
-   
+        return view('admin.resetpwd.resetpwd',['id'=>$id,'title'=>'修改密码']);
+
     }
 
        /**
@@ -60,7 +59,7 @@ class IndexController extends Controller
      */
    public function resetpwd(Request $request,$id)
     {
-       
+
         $oldpwd=$request->input('oldpwd');
         $newpwd=$request->input('newpwd');
         $confirmpwd=$request->input('confirmpwd');
@@ -71,28 +70,19 @@ class IndexController extends Controller
 
         $user=User::where('id',$id)->first();
         $datapwd=$user->password;
-       
-       
 
         if($datapwd!=$oldpwd)
         {
             return back()->withInput();
         }
-       
 
-      
         if($confirmpwd!=$newpwd)
         {
-            return back()->withInput();   
+            return back()->withInput();
         }
-        
 
         $user->password=$newpwd;
         $user->save();
-              
-         
-
-
 
     }
 
@@ -162,5 +152,5 @@ class IndexController extends Controller
     {
         //
     }
-        
+
 }
