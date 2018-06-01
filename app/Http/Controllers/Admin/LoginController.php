@@ -41,7 +41,7 @@ class LoginController extends Controller
              return back()->withErrors('用户密码错误') -> withInput();
         }
 
-         $id=$user['id'];
+        $id=$user['id'];
         $res = Usersdetail::where('uid',$id)->first();
        
 
@@ -55,7 +55,7 @@ class LoginController extends Controller
 
         //登录时间
      /* $abc= DB::table('loginhistory')->insert(['uid'=>$user->uid,'loginTime'=>time(),'ip'=>$_SERVER['REMOTE_ADDR']]);*/
-/*  dd($abc);//true;*/
+    /*  dd($abc);//true;*/
          return redirect('/admin/admin');
  
 
