@@ -16,7 +16,8 @@
        </style>
 <div class="result-wrap">
             <div class="result-title">
-                <h1>系统基本信息</h1>
+                <h1>欢迎管理员 {{ $user = session('adminUser')->username }} 登录操作系统</h1>
+                <h3>您当前操作系统基本信息如下</h3>
             </div>
             <div class="result-content">
                 <ul class="sys-info-list">

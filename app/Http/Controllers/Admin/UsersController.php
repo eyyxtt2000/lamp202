@@ -123,6 +123,7 @@ class UsersController extends Controller
         ];
         //dd($name);
         //dd($data);
+        //
        $uid= $user->insertGetId($data);
         $userdetail=new Usersdetail;
         $userdetail->uid=$uid;

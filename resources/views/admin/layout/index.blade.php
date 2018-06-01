@@ -187,6 +187,20 @@
                             <li><a href="/admin/users/create">用户添加</a></li>
                         </ul>
                     </li>
+                    <li class="active">
+                        <a href="#"><i class="icon-list"></i>友情链接</a>
+                        <ul>
+                            <li><a href="/admin/friendlylink">链接列表</a></li>
+                            <li><a href="/admin/friendlylink/create">链接添加</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="icon-list"></i>广告位</a>
+                        <ul>
+                            <li><a href="/admin/advertise">广告列表</a></li>
+                            <li><a href="/admin/advertise/create">广告添加</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
