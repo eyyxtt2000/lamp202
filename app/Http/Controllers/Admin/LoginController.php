@@ -25,20 +25,30 @@ class LoginController extends Controller
 
     public function dologin(Request $request)
     {
-       $form= $request->except('_token');
+       
+       $formu= $request->input('username');
+       $formp= $request->input('password');
+
           
-        $user = User::where('username',$form['username'])->first();
-      
+        $user = User::where('username',$formu)->first();
+
+        
+        
           //如果数据库中没有此用户，返回登录页面
         if(!$user)
         {
             return back()->withErrors('没有这个用户') -> withInput();
         }
-         $pwd=User::where('password',$user['password'])->first();
+         $pwd=User::where('password',$formp)->first();
 
         if(!$pwd)
         {
              return back()->withErrors('用户密码错误') -> withInput();
+        }
+         $coderes= checkcode($request->input('code'));
+         if(!$coderes)
+        {
+            return back()->withErrors('验证码错误') -> withInput();
         }
 
          $id=$user['id'];

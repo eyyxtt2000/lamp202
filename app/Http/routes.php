@@ -15,6 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//验证码
+Route::get('/code','CodeController@makecode');
+Route::get('/check','CodeController@checkcode');
+Route::get('/show','CodeController@show');
+Route::post('/store','CodeController@store');
+//测试结束
+
+
+
+
+
 
 //后台首页路由
 Route::get('/admin/admin','Admin\IndexController@index');
@@ -36,3 +47,19 @@ Route::resource('/admin/articles','Admin\ArticlesController');
 Route::get('/admin/resetpwd','Admin\IndexController@writepwd');
 //跳转到执行后台修改密码的控制器方法
 Route::post('/admin/resetpwd/{id}','Admin\IndexController@resetpwd');
+
+
+
+
+//前台主页模板路径
+route::get('/home/index','Home\HomeController@index');
+//前台留言板路由
+route::get('/home/board','Home\HomeController@board');
+//前台关于我们路由
+route::get('/home/about','Home\HomeController@about');
+//前台文章列表路由
+route::get('/home/article','Home\HomeController@article');
+//前台留言板路由
+route::get('/home/mood','Home\HomeController@mood');
+//前台文章详情表路由
+route::get('/home/articledetail','Home\HomeController@articledetail');
