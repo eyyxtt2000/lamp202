@@ -60,6 +60,16 @@
     </div>
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
-    var ue = UE.getEditor('container');
+     var ue = UE.getEditor('container',{
+            toolbars: [
+                ['bold', //加粗
+                 'italic', //斜体
+                 'underline', //下划线
+                 'undo', //撤销
+                 'simpleupload', //单图上传
+                 'emotion', //表情
+                ]
+            ]
+        });
     </script>
 @endsection
