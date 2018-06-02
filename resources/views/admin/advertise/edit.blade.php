@@ -41,7 +41,7 @@
                     <div class="mws-form-row">
                         <label class="mws-form-label">广告名:</label>
                         <div class="mws-form-item">
-                            <input type="text" name="title" class="small" placeholder="广告名" value="{{ $data->title }}">
+                            <input type="text" name="title" class="small" placeholder="广告名" disabled value="{{ $data->title }}">
                         </div>
                     </div>
                     <div class="mws-form-row">

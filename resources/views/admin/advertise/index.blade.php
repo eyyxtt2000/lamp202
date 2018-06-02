@@ -76,13 +76,13 @@
                                             <form action="/admin/advertise/disable/{{  $v->id   }}" method="post">
                                                 {{ csrf_field() }}
 
-                                                <input type="submit" id="disable" class="btn btn-danger" value="禁用" onclick="return confirm('确认要禁用该链接吗?');" >
+                                                <input type="submit" id="disable" class="btn btn-info" value="禁用" onclick="return confirm('确认要禁用该链接吗?');" >
                                             </form>
                                         @else
                                             <form action="/admin/advertise/able/{{  $v->id   }}" method="post">
                                                 {{ csrf_field() }}
 
-                                                <input type="submit" id="able" class="btn btn-danger" value="启用" onclick="return confirm('确认要启用该链接吗?');" >
+                                                <input type="submit" id="able" class="btn btn-success" value="启用" onclick="return confirm('确认要启用该链接吗?');" >
                                             </form>
                                         @endif
                                     </div>

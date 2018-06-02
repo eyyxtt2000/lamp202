@@ -33,7 +33,7 @@
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/admin/css/mws-theme.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admin/css/themer.css" media="screen">
-
+    <link href="/logo/2.png" type="image/x-iocn" rel="shortcut icon" />
 <title>@yield('title')</title>
 <style type="text/css">
     .page ul,.page li{

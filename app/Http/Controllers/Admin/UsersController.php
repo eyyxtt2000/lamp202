@@ -136,13 +136,6 @@ class UsersController extends Controller
         $userdetail->status=$request->input('status');;//用户默认开启
 
         $res2=$userdetail->save();
-
-   
-
-
-
-
-
         if($uid && $res2){
            
             return redirect('/admin/users')->with('success','添加成功');
