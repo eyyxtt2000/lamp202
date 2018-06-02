@@ -25,10 +25,10 @@
                       <div id="DataTables_Table_1_length" class="dataTables_length">
                         <label>显示
                           <select size="1" name="DataTables_Table_1_length" aria-controls="DataTables_Table_1">
-                            <option value="10" selected="selected">10</option>
-                            <option value="25">25</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option></select>条</label>
+                            <option value="5" selected="selected">5</option>
+                            <option value="10" >10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option></select>条</label>
                       </div>
                       <div class="dataTables_filter" id="DataTables_Table_1_filter">
 
@@ -44,21 +44,19 @@
                         <tr>
                             <td>ID</td>
                             <td>文章标题</td>
-                            <td>创建时间</td>
-                            <td>发布人</td>
-                            <td>标签云</td>
+                            <td>文章作者</td>
+                            <td>所属标签</td>
+                            <td>发表时间</td>
+                            <td>更新时间</td>
                             <td>操作</td>
                         </tr>
                         <tbody role="alert" aria-live="polite" aria-relevant="all">
-
                           @foreach($data as $k=>$v)
 
-
                         <tr>
-                            <td>{{$v->id}}</td>
+                            <td>{{$v->id}}</td> 
                             <td>{{$v->title}}</td>
-                            <td>{{$v->ctime}}</td>
-                            <td>{{$v->username}}</td>
+                            <td>{{$v->author}}</td>
                             <td>
                                @if($v->ftype == 0)
                                 <span>生活</span>
@@ -69,7 +67,9 @@
                                  @else
                                 <span>汽车</span>
                                @endif
-                            </td>
+                            </td >
+                            <td>{{$v->created_at}}</td>
+                            <td>{{$v->updated_at}}</td>
                             <td>
                                 <form action="/admin/articles/{{$v->id}}" method="post" style="display: inline;">
                                     {{ csrf_field() }}
@@ -79,13 +79,10 @@
 
                                <!--  <a href="/" class="btn btn-warning">修改</a> -->
 
-                    <form action="/admin/articles/{{$v->id}}/edit" method="get"  style="display: inline;>
-                        {{ csrf_field() }}
-
-
-                        <input type="submit" class="btn btn-warning"  value="修改">
-                     </form>
-
+                          <form action="/admin/articles/{{$v->id}}/edit" method="get"  style="display: inline;">
+                              {{ csrf_field() }}
+                              <input type="submit" class="btn btn-warning"  value="修改">
+                           </form>
                                 <a href="/admin/articles/{{$v->id}}" class="btn btn-info">查看文章内容</a>
                             </td>
                         </tr>
