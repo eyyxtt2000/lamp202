@@ -10,143 +10,79 @@ use DB;
 use App\User;
 use App\Models\Admin\Articles;
 use App\Models\Admin\Articlesinfo;
+
+//创建文章管理的控制器
 class ArticlesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //显示文章列表的方法
     public function index(Request $request)
     {
-       $for = $request -> input('for');
-       //dump($for);
+
+        $for=isset($_GET['for']) ? $_GET['for'] :'';
+        $data=Articles::where('title','like','%'.$for.'%') -> paginate($request -> input('DataTables_Table_1_length',5));
         //加载列表页
-      /*  $data=Articles::all();
-        $data->articlesinfo->content;*/
-       $data = DB::table('articles as a')
-        ->join('users as u','a.uid','=','u.id')
-        ->join('articles_info as af','a.id','=','af.tid')
-        ->select('a.title','a.ctime','a.id','a.ftype','u.username','af.content')
-        ->where('a.title','like','%'.$for.'%')
-        ->paginate(4);
-        /*$data=User::paginate(2);
-        
-       dd($data->uarticles->title);*/
-    //var_dump($data);
-        // dump(session('success'));
         return view('admin.articles.index',['title'=>'文章列表','data'=>$data]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //显示文章添加的方法
     public function create()
     {
         //加载模版
         return view('admin.articles.create',['title'=>'文章添加']);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    //执行文章的添加方法
     public function store(Request $request)
     {
-        DB::beginTransaction();//开启
+         DB::beginTransaction();//开启
         // 接受数据
-        $data = $request -> except('_token','content');
-        // 发表时间
-        $data['ctime'] = date('Y-m-d H:i:s',time());
-        // 发表人
-        $data['uid'] = session('uid',28);
-        
-        // 插入数据库
-        $tid = DB::table('articles')->insertGetId($data);
-        
-        $data2['tid'] = $tid;
-        $data2['content'] = $request -> input('content');
-        $res = DB::table('articles_info')->insert($data2);
-        if($tid && $res){
+        $articles=new Articles;
+        $articles -> ftype = $request -> input('ftype');
+        $articles -> title = $request -> input('title');
+        $articles -> content = $request -> input('content');
+        $articles -> author = session('adminUser')->username;
+        $res = $articles -> save();
+        if($res){
             DB::commit();
             return redirect('/admin/articles')->with('success','添加成功');
-            
         }else{
            DB::rollBack();
            return back()->with('error','添加失败');
         }
-
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //显示文章详情的方法
     public function show($id)
     {
         //获取文章内容
-        $data = DB::table('articles_info')->where('tid','=',$id)->select('content')->first();
+        $articles=Articles::find($id);
 
         // 模版
-        return view('admin.Articles.show',['data'=>$data]);
+        return view('admin.Articles.show',['articles'=>$articles]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   //显示修改页面的方法
     public function edit($id)
     {
-        //dd($id);
-        //
-        $title='修改页面';
-         $data = DB::table('articles as a')
-        ->join('articles_info as in','a.id','=','in.tid')
-
-        
-        ->select('a.title','a.ctime','a.id','a.ftype','in.content')
-        ->where('a.id','=',$id)
-        ->first();
-       //dd($data);
-        echo '您当前修改的是第'.$id.'条数据信息';
-         //dd($id);
-         
-        return view('admin.articles.edit',['id'=>$id,'title'=>$title,'data'=>$data]);
-       
-
+        $articles=Articles::find($id);
+        return view('admin.articles.edit',['title'=>'文章修改','articles'=>$articles]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //执行修改更新数据的方法
     public function update(Request $request, $id)
     {
 
-        DB::beginTransaction();//开启
+      DB::beginTransaction();//开启
         // 接数据
-        $data = $request -> except('_token','content','_method');
-        
-        // 修改插入数据库
-        $tid = DB::table('articles')->where('id','=',$id)->update($data);
-
-        $data2['content'] = $request -> input('content');
-        $res = DB::table('articles_info')->where('tid','=',$id)->update($data2);
-        if($tid || $res){
+        $articles=Articles::find($id);
+        $articles -> ftype = $request -> input('ftype');
+        $articles -> title = $request -> input('title');
+        $articles -> content = $request -> input('content');
+        $res = $articles->save();
+        if($res){
             DB::commit();
             return redirect('/admin/articles')->with('success','修改成功');
-            
+
         }else{
            DB::rollBack();
            return back()->with('error','修改失败');
@@ -154,20 +90,17 @@ class ArticlesController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   //执行文章删除的方法
     public function destroy($id)
     {
-        //
-        $res1 = DB::table('articles')->where('id','=',$id)->delete();
-        $res2 = DB::table('articles_info')->where('tid','=',$id)->delete();
-        if($res1 && $res2){
+        DB::beginTransaction();//开启
+        $res = Articles::destroy($id);
+        $data = Articles::find($id);
+        if($res){
+            DB::commit();//确认提交
             return redirect('/admin/articles')->with('success','删除成功');
         }else{
+            DB::rollBack();//回滚
             return redirect('/admin/articles')->with('error','删除失败');
         }
     }

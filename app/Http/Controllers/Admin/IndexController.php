@@ -92,6 +92,7 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         //

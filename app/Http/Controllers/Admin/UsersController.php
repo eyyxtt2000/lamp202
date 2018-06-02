@@ -99,6 +99,7 @@ class UsersController extends Controller
         // 存放数据
         $user = new User;
 
+
         $data = [
             'profile' => $name,  // 图片路径存放
             'username' => $request -> input('username',''),
