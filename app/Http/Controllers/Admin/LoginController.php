@@ -27,12 +27,12 @@ class LoginController extends Controller
 
     public function dologin(Request $request)
     {
-<<<<<<< HEAD
+
         $form= $request->except('_token');
 
         $user = User::where('username',$form['username'])->first();
 
-=======
+
        
        $formu= $request->input('username');
        $formp= $request->input('password');
@@ -42,7 +42,7 @@ class LoginController extends Controller
 
         
         
->>>>>>> origin/zzm
+
           //如果数据库中没有此用户，返回登录页面
         if(!$user)
         {
@@ -73,9 +73,9 @@ class LoginController extends Controller
         session(['adminUser'=>$user]);
 
         //登录时间
-<<<<<<< HEAD
+
         return redirect('/admin/admin');
-=======
+
      /* $abc= DB::table('loginhistory')->insert(['uid'=>$user->uid,'loginTime'=>time(),'ip'=>$_SERVER['REMOTE_ADDR']]);*/
 /*  dd($abc);//true;*/
         return redirect('/admin/admin');//
@@ -87,7 +87,7 @@ class LoginController extends Controller
         
 
         
->>>>>>> origin/zzm
+
     }
 
      /**

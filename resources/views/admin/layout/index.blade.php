@@ -105,7 +105,7 @@
             <div id="mws-user-info" class="mws-inset">
             
                 <!-- 用户头像 -->
-                @if( session() )
+                @if( session('adminUser') )
             
             <div id="mws-user-photo">
                 <img src="{{$user = session('adminUser')->profile}}" alt="">
@@ -119,7 +119,7 @@
                 <!-- Username and Functions -->
                 <div id="mws-user-functions">
                     <div id="mws-username">
-                    @if( session() )
+                    @if( session('adminUser') )
                        {{'你好'.','.$user = session('adminUser')->username}}
                      @else
                         Hello, 用户

@@ -80,7 +80,7 @@ route::get('/home/article','Home\HomeController@article');
 //前台留言板路由
 route::get('/home/mood','Home\HomeController@mood');
 //前台文章详情表路由
-route::get('/home/articledetail','Home\HomeController@articledetail');
+route::get('/home/articledetail/{id}','Home\HomeController@articledetail');
 
 //前台登录
 Route::controller('/home/login','Home\LoginController');

@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Models\Admin\FriendlyLink;
+use App\Models\Admin\Articles;
 class HomeController extends Controller
 {
     /**
@@ -16,8 +17,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-       return view('home.index');
+        $friend=FriendlyLink::all();
+
+        $articles_new=Articles::orderBy('created_at','desc')->get();
+        foreach ($articles_new as $key => $value) {
+            
+            
+            $content=$value['content'];
+            $preg = "/<img(.*?)>/i"     ;
+            $value['content'] = preg_replace($preg,'', $content);
+        }
+      
+       return view('home.index',['friend'=>$friend,'articles_new'=>$articles_new]);
     }
 
     
@@ -37,9 +48,14 @@ class HomeController extends Controller
     {
         return view('home.article');
     }
-      public function articledetail()
+      public function articledetail($id)
     {
-        return view('home.articledetail');
+        $detail=Articles::find($id);
+        $previd= Articles::where('id', '<', $id)->max('id');
+        $prev = Articles::find($previd);
+        $nextid=Articles::where('id', '>', $id)->min('id');
+        $next = Articles::find($nextid);
+        return view('home.articledetail', ['detail'=>$detail,'prev'=>$prev,'next'=>$next]);
     }
 
      public function logout()
