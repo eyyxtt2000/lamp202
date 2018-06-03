@@ -11,10 +11,18 @@
     <div class="slider_main">
             <div class="slider">
                 <div class="bd">
-                    <div class="tempWrap" style="overflow:hidden; position:relative; width:923px"><ul style="width: 3692px; position: relative; overflow: hidden; padding: 0px; margin: 0px; left: -923px;"><li class="clone" style="float: left; width: 923px;"><a href="#" target="_blank"><img src="img/temp/banner8.png"></a></li>
-                        <li style="float: left; width: 923px;"><a href="#" target="_blank"><img src="img/temp/banner1.jpg"></a></li>
-                        <li style="float: left; width: 923px;"><a href="#" target="_blank"><img src="img/temp/banner8.png"></a></li>
-                    <li class="clone" style="float: left; width: 923px;"><a href="#" target="_blank"><img src="img/temp/banner1.jpg"></a></li></ul></div>
+                    <div class="tempWrap" style="overflow:hidden; position:relative; width:923px">
+                    <ul style="width: 3692px; position: relative; overflow: hidden; padding: 0px; margin: 0px; left: -923px;">
+                    
+                        <li class="clone" style="float: left; width: 923px;"><a href="#" target="_blank"><img src="/homeblog/img/temp/banner8.png"></a></li>
+
+                        <li style="float: left; width: 923px;"><a href="#" target="_blank"><img src="/homeblog/img/temp/banner1.jpg"></a></li>
+
+                        <li style="float: left; width: 923px;"><a href="#" target="_blank"><img src="/homeblog/img/temp/banner8.png"></a></li>
+
+                        <li class="clone" style="float: left; width: 923px;"><a href="#" target="_blank"><img src="/homeblog/blogimg/temp/banner1.jpg"></a></li>
+
+                    </ul></div>
                 </div>
                 <ol class="hd cl dots">
                     <li class="active">1</li>
@@ -230,9 +238,9 @@
                 <div class="slideTxtBox">
                     <div class="bd">
                         <div class="tempWrap" style="overflow:hidden; position:relative; height:19px"><ul style="top: 0px; position: relative; padding: 0px; margin: 0px;">
-                            <li style="height: 19px;"><a href="javascript:void(0);">Lao博客测试版上线，欢迎访问</a></li>
+                            <li style="height: 19px;"><a href="javascript:void(0);">个人博客测试版上线，欢迎访问</a></li>
                             <li style="height: 19px;"><a href="javascript:void(0);">内容如有侵犯，请立即联系管理员删除</a></li>
-                            <li style="height: 19px;"><a href="javascript:void(0);">本站内容仅供学习和参阅，不做任何商业用途</a></li>
+                            <li style="height: 19px;"><a href="javascript:void(0);">仅提供学习开源，不做商业用途</a></li>
                         </ul></div>
                     </div>
                 </div>
@@ -242,44 +250,44 @@
     <!--博主信息-->
         <div class="bg-fff box-shadow radius mb-20">
             <div class="tab-category">
-                <a href=""><strong>博主信息</strong></a>
+                <a href=""><strong>博主们的信息</strong></a>
             </div>
             <div class="tab-category-item">
                 <ul class="index_recd">
-                    <li class="index_recd_item"><i class="Hui-iconfont"></i>姓名：王风宇</li>
-                    <li class="index_recd_item"><i class="Hui-iconfont"></i>职业：JavaWeb开发</li>
-                    <li class="index_recd_item"><i class="Hui-iconfont"></i>邮箱：<a href="mailto:wfyv@qq.com">wfyv@qq.com</a></li>
-                    <li class="index_recd_item"><i class="Hui-iconfont"></i>定位：安徽 · 合肥</li>
+                    <li class="index_recd_item"><i class="Hui-iconfont"></i>团队人员：郑志民,刘富生,冯毅,杨宇星</li>
+                    <li class="index_recd_item"><i class="Hui-iconfont"></i>专业：phpWeb前后端开发</li>
+                    <li class="index_recd_item"><i class="Hui-iconfont"></i>邮箱：<a href="mailto:66******88@qq.com">66****88@qq.com</a></li>
+                    <li class="index_recd_item"><i class="Hui-iconfont"></i>定位：北京 · 昌平</li>
                 </ul>
             </div>
         </div>
     
     
     <!--热门推荐-->
-    <div class="bg-fff box-shadow radius mb-20">
+        <div class="bg-fff box-shadow radius mb-20">
             <div class="tab-category">
                 <a href=""><strong>热门推荐</strong></a>
             </div>
             <div class="tab-category-item">
                 <ul class="index_recd">
                     <li>
-                        <a href="#">阻止a标签href默认跳转事件</a>
+                        <a href="#">1111阻止a标签href默认跳转事件</a>
                         <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 </p>
                     </li>
                     <li>
-                        <a href="#">PHP面试题汇总</a>
+                        <a href="#">222222PHP面试题汇总</a>
                         <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 </p>
                     </li>
                     <li>
-                        <a href="#">阻止a标签href默认跳转事件</a>
+                        <a href="#">3333333阻止a标签href默认跳转事件</a>
                         <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 </p>
                     </li>
                     <li>
-                        <a href="#">阻止a标签href默认跳转事件</a>
+                        <a href="#">444444阻止a标签href默认跳转事件</a>
                         <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 </p>
                     </li>
                     <li>
-                        <a href="#">PHP面试题汇总</a>
+                        <a href="#">555555PHP面试题汇总</a>
                         <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 </p>
                     </li>
                 </ul>
@@ -294,31 +302,31 @@
             <div class="tab-category-item">
                 <ul class="index_recd clickTop">
                     <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
+                        <a href="#">111AJAX的刷新和前进后退问题解决</a>
                         <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
                     </li>
                     <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
+                        <a href="#">22222AJAX的刷新和前进后退问题解决</a>
                         <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
                     </li>
                     <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
+                        <a href="#">33333AJAX的刷新和前进后退问题解决</a>
                         <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
                     </li>
                     <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
+                        <a href="#">44444AJAX的刷新和前进后退问题解决</a>
                         <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
                     </li>
                     <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
+                        <a href="#">5555AJAX的刷新和前进后退问题解决</a>
                         <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
                     </li>
                     <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
+                        <a href="#">6666AJAX的刷新和前进后退问题解决</a>
                         <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
                     </li>
                     <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
+                        <a href="#">7777AJAX的刷新和前进后退问题解决</a>
                         <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
                     </li>
                 </ul>

@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Admin\Usersdetail;
 
+/*use Illuminate\Foundation\Auth\AuthenticatesUsers;//引入完整的跳转回父页
+use Illuminate\Support\Facades\URL;*/
 class LoginController extends Controller
 {
     /**
@@ -66,9 +68,12 @@ class LoginController extends Controller
         //登录时间
      /* $abc= DB::table('loginhistory')->insert(['uid'=>$user->uid,'loginTime'=>time(),'ip'=>$_SERVER['REMOTE_ADDR']]);*/
 /*  dd($abc);//true;*/
-         return redirect('/admin/admin');
- 
-
+        return redirect('/admin/admin');//
+            // return ('/home/index');
+           
+    
+           /* return URL::previous();*/
+    
         
 
         

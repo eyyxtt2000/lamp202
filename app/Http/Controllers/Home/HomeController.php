@@ -42,6 +42,13 @@ class HomeController extends Controller
         return view('home.articledetail');
     }
 
+     public function logout()
+    {
+         session()->flush();
+         session(['homeFlag'=>false]);
+         return view('home.index');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

@@ -3,14 +3,14 @@
 <html>
 
 <head>
-<title>老王个人博客 — 一个站在java开发之路上的草根程序员个人博客网站</title>
+<title>个人博客</title>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="keywords" content="个人博客,王风宇个人博客,个人博客系统,老王博客,王风宇">
-<meta name="description" content="Lao王博客系统，一个站在java开发之路上的草根程序员个人博客网站。">
+<meta name="keywords" content="个人博客">
+<meta name="description" content="程序员个人博客网站。">
 <LINK rel="Bookmark" href="/homeblog/favicon.ico" >
 <LINK rel="Shortcut Icon" href="/homeblog/favicon.ico" />
 <!--[if lt IE 9]>
@@ -22,12 +22,32 @@
 <link rel="stylesheet" type="text/css" href="/homeblog/css/common.css" />
 <link rel="stylesheet" type="text/css" href="/homeblog/plugin/pifu/pifu.css" />
 <link rel="stylesheet" type="text/css" href="/homeblog/css/timeline.css">
+<!--引入layer弹窗开始做登录-->
+<link href="/homelog/layui/css/layui.css" rel="stylesheet" type="text/css" />
+
+<!--引入layer弹窗结束做登录-->
+
 
 <!--[if lt IE 9]>
 <link href="/staticRes/lib/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css" />
 <![endif]-->
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } function showSide(){$('.navbar-nav').toggle();}
 </script>
+
+<!--引入layer弹窗开始做登录-->
+<script src="/homelog/layui/layui.all.js"></script>
+<script>
+//初始化layer一般直接写在一个js文件中
+layui.use(['layer', 'form'], function(){
+  var layer = layui.layer
+  ,form = layui.form;
+  
+  layer.msg('Hello World');
+});
+
+
+</script> 
+<!--引入layer弹窗结束做登录-->
 
 </head>
 <body>
@@ -45,9 +65,9 @@
     <div class="navbar navbar-fixed-top">
         <div class="container cl">
             <a class="navbar-logo hidden-xs" href="index.html">
-                <img class="logo" src="/homeblog/img/logo.png" alt="Lao王博客" />
+                <img class="logo" src="/homeblog/img/logo.png" alt="个人博客" />
             </a>
-            <a class="logo navbar-logo-m visible-xs" href="index.html">Lao王博客</a>
+            <a class="logo navbar-logo-m visible-xs" href="index.html">个人博客</a>
             <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:void(0);" onclick="showSide();">&#xe667;</a>
             <nav class="nav navbar-nav nav-collapse w_menu" role="navigation">
                 <ul class="cl">
@@ -61,13 +81,56 @@
             <nav class="navbar-nav navbar-userbar hidden-xs hidden-sm " style="top: 0;">
                 <ul class="cl">
                     <li class="userInfo dropDown dropDown_hover">
-                            <a href="javascript:;" ><img class="avatar radius" src="/homeblog/img/40.jpg" alt="丶似浅 "></a>
-                            <ul class="dropDown-menu menu radius box-shadow">
-                                <li><a href="/app/loginOut">退出</a></li>
-                            </ul>
-                            <a href="/app/qq" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" ><img class="avatar size-S" src="/homeblog/img/qq.jpg" title="登入">登入</a>
+                   
+                     @if( session('homeuser') ) 
+
+            <?php
+              date_default_timezone_set('Asia/Shanghai');
+              $h=date("H");
+              if($h<11) echo "早上好!";
+              else if($h<13) echo "中午好！";
+              else if($h<17) echo "下午好！";
+              else echo "晚上好！";
+              
+              ?>
+
+                              {{session('homeuser')['username']}}
+                             
+
+                           <a href="javascript:;" ><img class="avatar radius"  src="{{ session('homeuser')['profile'] }}"  alt="博客"></a>
+                           <ul class="dropDown-menu menu radius box-shadow">
+                               <li><a href="/home/logout">退出</a></li>
+                           </ul>
+                    @else  
+                             
+                             <a href="#" onclick="return tan()" ><img class="avatar size-S" src="/homeblog/img/qq.jpg" title="登入">登入</a>
+                     @endif 
+                          
+                            
                     </li>
                 </ul>
+                  <script type="text/javascript">
+                               
+
+                            function tan()
+                            {
+                                    var index = layer.open({  
+                                        type: 2,  
+
+                                        content: '/home/login/login', 
+                                        area: ['600px', '500px'],   
+                                        title: false,  
+                                        maxmin: true,   
+                                        closeBtn: 0  
+                                                }); 
+                                     
+
+                                layer.full(index); 
+                            }
+
+                            
+                               
+                            </script>
             </nav>
         </div>
     </div>

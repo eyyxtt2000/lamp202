@@ -20,7 +20,7 @@ Route::get('/code','CodeController@makecode');
 Route::get('/check','CodeController@checkcode');
 Route::get('/show','CodeController@show');
 Route::post('/store','CodeController@store');
-//测试结束
+//验证码测试结束测试结束
 
 
 
@@ -63,3 +63,24 @@ route::get('/home/article','Home\HomeController@article');
 route::get('/home/mood','Home\HomeController@mood');
 //前台文章详情表路由
 route::get('/home/articledetail','Home\HomeController@articledetail');
+
+//前台登录
+Route::controller('/home/login','Home\LoginController');
+//前台用户退出路由
+Route::get('/home/logout','Home\HomeController@logout');
+//前台主页面
+Route::get('/home/home','Home\LoginController@index');
+//前台检测登录
+Route::post('/home/ajax1',function(){
+    
+   // return $_POST['uname'];
+   $uname=$_POST['username'];
+   //return $name;
+   $res=DB::table('users')->where('username','=',$uname)->first();
+   if($res){return 1;}else{
+    return 0;
+   }
+ 
+
+
+});
