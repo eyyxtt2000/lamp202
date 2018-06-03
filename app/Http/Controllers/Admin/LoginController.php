@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Admin\Usersdetail;
 
+/*use Illuminate\Foundation\Auth\AuthenticatesUsers;//引入完整的跳转回父页
+use Illuminate\Support\Facades\URL;*/
 class LoginController extends Controller
 {
     /**
@@ -25,20 +27,37 @@ class LoginController extends Controller
 
     public function dologin(Request $request)
     {
+<<<<<<< HEAD
         $form= $request->except('_token');
 
         $user = User::where('username',$form['username'])->first();
 
+=======
+       
+       $formu= $request->input('username');
+       $formp= $request->input('password');
+
+          
+        $user = User::where('username',$formu)->first();
+
+        
+        
+>>>>>>> origin/zzm
           //如果数据库中没有此用户，返回登录页面
         if(!$user)
         {
             return back()->withErrors('没有这个用户') -> withInput();
         }
-         $pwd=User::where('password',$user['password'])->first();
+         $pwd=User::where('password',$formp)->first();
 
         if(!$pwd)
         {
              return back()->withErrors('用户密码错误') -> withInput();
+        }
+         $coderes= checkcode($request->input('code'));
+         if(!$coderes)
+        {
+            return back()->withErrors('验证码错误') -> withInput();
         }
 
         $id=$user['id'];
@@ -54,7 +73,21 @@ class LoginController extends Controller
         session(['adminUser'=>$user]);
 
         //登录时间
+<<<<<<< HEAD
         return redirect('/admin/admin');
+=======
+     /* $abc= DB::table('loginhistory')->insert(['uid'=>$user->uid,'loginTime'=>time(),'ip'=>$_SERVER['REMOTE_ADDR']]);*/
+/*  dd($abc);//true;*/
+        return redirect('/admin/admin');//
+            // return ('/home/index');
+           
+    
+           /* return URL::previous();*/
+    
+        
+
+        
+>>>>>>> origin/zzm
     }
 
      /**

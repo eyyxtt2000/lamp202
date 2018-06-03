@@ -45,7 +45,7 @@
                         <label class="mws-form-label">文章内容</label>
                         <div class="mws-form-item">
                         <!-- 加载编辑器的容器 -->
-                        <script id="container" name="content" class="small" type="text/plain">
+                        <script id="container" name="content" class="small" type="text/plain" style="height:300px;" >
                         </script>
                         </div>
                     </div>

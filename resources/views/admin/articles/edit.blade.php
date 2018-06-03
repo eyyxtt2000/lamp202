@@ -35,7 +35,7 @@
                     <div class="mws-form-row">
                         <label class="mws-form-label">文章内容</label>
                         <div class="mws-form-item">
-                             <script id="container" name="content" class="small" type="text/plain">
+                             <script id="container" name="content" class="small" type="text/plain" style="height:300px;">
                              {!!$articles -> content!!}
                             </script>
                             
