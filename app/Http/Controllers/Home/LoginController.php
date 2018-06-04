@@ -67,11 +67,13 @@ class LoginController extends Controller
              return back()->withErrors('用户密码错误') -> withInput();
         }else{
 
-                $detail = UserDetail::find($id);
-                //$detail=DB::table('user_details')->where('uid','=',$uid)->get();
-              //dd($detail);//打印查到详细信息
-
-                if ( $detail['status'] == 0) {
+               // $detail = UserDetail::find($id);
+                $detail=DB::table('users_detail')->where('uid','=',$id)->get();
+                //dd($detail[0]->status); 
+                //dd($detail);//打印查到详细信息
+                $status=$detail[0]->status;
+                //dd($status);
+                if ( $status == 0) {
                     return back()->withErrors('当前用户已被禁用，请您联系客服。') -> withInput();
                 }
                 session(['homeFlag'=>true]);
@@ -79,7 +81,7 @@ class LoginController extends Controller
                 //dd($user->profile);
                 //dd(session('homeuser')['profile']);
                 
-                return view('home.index');
+                return redirect('/');
 
         }
 

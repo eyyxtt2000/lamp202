@@ -40,191 +40,33 @@
         </div>
         <div class="art_content">
             <ul class="index_arc">
+            <!--遍历最新文章开始-->
+            @foreach( $articles_new as $k => $v )
                 <li class="index_arc_item">
                     <a href="#" class="pic">
                         <img class="lazyload" data-original="temp/art.jpg" alt="应该选" src="temp/art.jpg" style="display: inline-block;">
                     </a>
-                    <h4 class="title"><a href="/home/articledetail">个人博客应该选择什么样的域名和域名后缀</a></h4>
+                    <h4 class="title"><a href="/home/articledetail/{{$v->id}}">{{$v->title}}</a></h4>
                     <div class="date_hits">
-                        <span>老王</span>
-                        <span>2017-02-24</span>
-                        <span><a href="/article-lists/10.html">程序人生</a></span>
+                        <span>{{$v->author}}</span>
+                        <span>{{$v->created_at}}</span>
+                        <span><a href="">栏目名称等你联查遍历</a></span>
                         <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
                         <p class="commonts"><i class="Hui-iconfont" title="点击量"></i> <span class="cy_cmt_count">20</span></p>
                     </div>
-                    <div class="desc">不论搭建什么样的网站，选择一个好的域名都是很有必要的，选择一个好的域名对网站的意义也是不言而喻的。每一个网站都有之对应的域名，就像人的名字一样。每个人都想自己有个好听的名字，网站也是一样。一个网站可以有多个域名，但是一个域名只能对应一个网站。&nbsp;一、域名要好记，方便输入&nbsp; &nbsp; &nbsp; &nbsp;域名本身的意义就是为了人们方便记忆才使用的，不然都用IP地址就好了。所以，网站域名一定要选择好记忆的。因为域名是</div>
+                    <div class="desc">{!! $v->content !!}</div>
                 </li>
-                
-                
-                <li class="index_arc_item no_pic">
-                    <h4 class="title"><a href="/article/5.html">个人博客应该选择什么样的域名和域名后缀</a></h4>
-                    <div class="date_hits">
-                        <span>老王</span>
-                        <span>2个月前</span>
-                        <span><a href="/article-lists/10.html">建站</a></span>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 °</p>
-                        <p class="commonts"><i class="Hui-iconfont" title="点击量"></i> <span id="sourceId::105" class="cy_cmt_count">20</span></p>
-                    </div>
-                    <div class="desc"> 不论搭建什么样的网站，选择一个好的域名都是很有必要的，选择一个好的域名对网站的意义也是不言而喻的。每一个网站都有之对应的域名，就像人的名字一样。每个人都想自己有个好听的名字，网站也是一样。一个网站可以有多个域名，但是一个域名只能对应一个网站。&nbsp;一、域名要好记，方便输入&nbsp; &nbsp; &nbsp; &nbsp;域名本身的意义就是为了人们方便记忆才使用的，不然都用IP地址就好了。所以，网站域名一定要选择好记忆的。因为域名是</div>
-                </li>
-                
-                <li class="index_arc_item">
-                <a href="/article/4" class="pic">
-                    <img class="lazyload" data-original="temp/art.jpg" alt="centos 6.5 nginx安装及配置" src="temp/art.jpg" style="display: inline-block;">
-                </a>
-            <h4 class="title"><a href="/article/4">centos 6.5 nginx安装及配置</a></h4>
-            <div class="date_hits">
-                <span>老王</span>
-                <span>2017-3-15</span>
-                <span>
-                    <a href="/article?t=1">程序人生</a>
-                </span>
-                <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 13° </p>
-                <p class="commonts"><i class="Hui-iconfont" title="评论"></i> <span class="cy_cmt_count">0</span></p>
-            </div>
-            <div class="desc">linux环境中nginx安装及配置简要概述。。。</div>
-        </li>
-         
-         <li class="index_arc_item">
-                    <a href="#" class="pic">
-                        <img class="lazyload" data-original="temp/art.jpg" alt="应该选" src="temp/art.jpg" style="display: inline-block;">
-                    </a>
-                    <h4 class="title"><a href="article_detail.html">个人博客应该选择什么样的域名和域名后缀</a></h4>
-                    <div class="date_hits">
-                        <span>老王</span>
-                        <span>2017-02-24</span>
-                        <span><a href="/article-lists/10.html">程序人生</a></span>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
-                        <p class="commonts"><i class="Hui-iconfont" title="点击量"></i> <span class="cy_cmt_count">20</span></p>
-                    </div>
-                    <div class="desc">不论搭建什么样的网站，选择一个好的域名都是很有必要的，选择一个好的域名对网站的意义也是不言而喻的。每一个网站都有之对应的域名，就像人的名字一样。每个人都想自己有个好听的名字，网站也是一样。一个网站可以有多个域名，但是一个域名只能对应一个网站。&nbsp;一、域名要好记，方便输入&nbsp; &nbsp; &nbsp; &nbsp;域名本身的意义就是为了人们方便记忆才使用的，不然都用IP地址就好了。所以，网站域名一定要选择好记忆的。因为域名是</div>
-                </li>
-                
-                
-                <li class="index_arc_item no_pic">
-                    <h4 class="title"><a href="/article/5.html">个人博客应该选择什么样的域名和域名后缀</a></h4>
-                    <div class="date_hits">
-                        <span>老王</span>
-                        <span>2个月前</span>
-                        <span><a href="/article-lists/10.html">建站</a></span>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 °</p>
-                        <p class="commonts"><i class="Hui-iconfont" title="点击量"></i> <span id="sourceId::105" class="cy_cmt_count">20</span></p>
-                    </div>
-                    <div class="desc"> 不论搭建什么样的网站，选择一个好的域名都是很有必要的，选择一个好的域名对网站的意义也是不言而喻的。每一个网站都有之对应的域名，就像人的名字一样。每个人都想自己有个好听的名字，网站也是一样。一个网站可以有多个域名，但是一个域名只能对应一个网站。&nbsp;一、域名要好记，方便输入&nbsp; &nbsp; &nbsp; &nbsp;域名本身的意义就是为了人们方便记忆才使用的，不然都用IP地址就好了。所以，网站域名一定要选择好记忆的。因为域名是</div>
-                </li>
-                
-                <li class="index_arc_item">
-                <a href="/article/4" class="pic">
-                    <img class="lazyload" data-original="temp/art.jpg" alt="centos 6.5 nginx安装及配置" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-                </a>
-            <h4 class="title"><a href="/article/4">centos 6.5 nginx安装及配置</a></h4>
-            <div class="date_hits">
-                <span>老王</span>
-                <span>2017-3-15</span>
-                <span>
-                    <a href="/article?t=1">程序人生</a>
-                </span>
-                <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 13° </p>
-                <p class="commonts"><i class="Hui-iconfont" title="评论"></i> <span class="cy_cmt_count">0</span></p>
-            </div>
-            <div class="desc">linux环境中nginx安装及配置简要概述。。。</div>
-        </li>
-          
-          <li class="index_arc_item">
-                    <a href="#" class="pic">
-                        <img class="lazyload" data-original="temp/art.jpg" alt="应该选" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-                    </a>
-                    <h4 class="title"><a href="article_detail.html">个人博客应该选择什么样的域名和域名后缀</a></h4>
-                    <div class="date_hits">
-                        <span>老王</span>
-                        <span>2017-02-24</span>
-                        <span><a href="/article-lists/10.html">程序人生</a></span>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
-                        <p class="commonts"><i class="Hui-iconfont" title="点击量"></i> <span class="cy_cmt_count">20</span></p>
-                    </div>
-                    <div class="desc">不论搭建什么样的网站，选择一个好的域名都是很有必要的，选择一个好的域名对网站的意义也是不言而喻的。每一个网站都有之对应的域名，就像人的名字一样。每个人都想自己有个好听的名字，网站也是一样。一个网站可以有多个域名，但是一个域名只能对应一个网站。&nbsp;一、域名要好记，方便输入&nbsp; &nbsp; &nbsp; &nbsp;域名本身的意义就是为了人们方便记忆才使用的，不然都用IP地址就好了。所以，网站域名一定要选择好记忆的。因为域名是</div>
-                </li>
-                
-                
-                <li class="index_arc_item no_pic">
-                    <h4 class="title"><a href="/article/5.html">个人博客应该选择什么样的域名和域名后缀</a></h4>
-                    <div class="date_hits">
-                        <span>老王</span>
-                        <span>2个月前</span>
-                        <span><a href="/article-lists/10.html">建站</a></span>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 °</p>
-                        <p class="commonts"><i class="Hui-iconfont" title="点击量"></i> <span id="sourceId::105" class="cy_cmt_count">20</span></p>
-                    </div>
-                    <div class="desc"> 不论搭建什么样的网站，选择一个好的域名都是很有必要的，选择一个好的域名对网站的意义也是不言而喻的。每一个网站都有之对应的域名，就像人的名字一样。每个人都想自己有个好听的名字，网站也是一样。一个网站可以有多个域名，但是一个域名只能对应一个网站。&nbsp;一、域名要好记，方便输入&nbsp; &nbsp; &nbsp; &nbsp;域名本身的意义就是为了人们方便记忆才使用的，不然都用IP地址就好了。所以，网站域名一定要选择好记忆的。因为域名是</div>
-                </li>
-                
-                <li class="index_arc_item">
-                <a href="/article/4" class="pic">
-                    <img class="lazyload" data-original="temp/art.jpg" alt="centos 6.5 nginx安装及配置" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-                </a>
-            <h4 class="title"><a href="/article/4">centos 6.5 nginx安装及配置</a></h4>
-            <div class="date_hits">
-                <span>老王</span>
-                <span>2017-3-15</span>
-                <span>
-                    <a href="/article?t=1">程序人生</a>
-                </span>
-                <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 13° </p>
-                <p class="commonts"><i class="Hui-iconfont" title="评论"></i> <span class="cy_cmt_count">0</span></p>
-            </div>
-            <div class="desc">linux环境中nginx安装及配置简要概述。。。</div>
-        </li>
-          
-          <li class="index_arc_item">
-                    <a href="#" class="pic">
-                        <img class="lazyload" data-original="temp/art.jpg" alt="应该选" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-                    </a>
-                    <h4 class="title"><a href="article_detail.html">个人博客应该选择什么样的域名和域名后缀</a></h4>
-                    <div class="date_hits">
-                        <span>老王</span>
-                        <span>2017-02-24</span>
-                        <span><a href="/article-lists/10.html">程序人生</a></span>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
-                        <p class="commonts"><i class="Hui-iconfont" title="点击量"></i> <span class="cy_cmt_count">20</span></p>
-                    </div>
-                    <div class="desc">不论搭建什么样的网站，选择一个好的域名都是很有必要的，选择一个好的域名对网站的意义也是不言而喻的。每一个网站都有之对应的域名，就像人的名字一样。每个人都想自己有个好听的名字，网站也是一样。一个网站可以有多个域名，但是一个域名只能对应一个网站。&nbsp;一、域名要好记，方便输入&nbsp; &nbsp; &nbsp; &nbsp;域名本身的意义就是为了人们方便记忆才使用的，不然都用IP地址就好了。所以，网站域名一定要选择好记忆的。因为域名是</div>
-                </li>
-                
-                
-                <li class="index_arc_item no_pic">
-                    <h4 class="title"><a href="/article/5.html">个人博客应该选择什么样的域名和域名后缀</a></h4>
-                    <div class="date_hits">
-                        <span>老王</span>
-                        <span>2个月前</span>
-                        <span><a href="/article-lists/10.html">建站</a></span>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 °</p>
-                        <p class="commonts"><i class="Hui-iconfont" title="点击量"></i> <span id="sourceId::105" class="cy_cmt_count">20</span></p>
-                    </div>
-                    <div class="desc"> 不论搭建什么样的网站，选择一个好的域名都是很有必要的，选择一个好的域名对网站的意义也是不言而喻的。每一个网站都有之对应的域名，就像人的名字一样。每个人都想自己有个好听的名字，网站也是一样。一个网站可以有多个域名，但是一个域名只能对应一个网站。&nbsp;一、域名要好记，方便输入&nbsp; &nbsp; &nbsp; &nbsp;域名本身的意义就是为了人们方便记忆才使用的，不然都用IP地址就好了。所以，网站域名一定要选择好记忆的。因为域名是</div>
-                </li>
-                
-                <li class="index_arc_item">
-                <a href="/article/4" class="pic">
-                    <img class="lazyload" data-original="temp/art.jpg" alt="centos 6.5 nginx安装及配置" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-                </a>
-            <h4 class="title"><a href="/article/4">centos 6.5 nginx安装及配置</a></h4>
-            <div class="date_hits">
-                <span>老王</span>
-                <span>2017-3-15</span>
-                <span>
-                    <a href="/article?t=1">程序人生</a>
-                </span>
-                <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 13° </p>
-                <p class="commonts"><i class="Hui-iconfont" title="评论"></i> <span class="cy_cmt_count">0</span></p>
-            </div>
-            <div class="desc">linux环境中nginx安装及配置简要概述。。。</div>
-        </li>
-          
-                </ul>
+            @endforeach
+            <!--遍历最新文章结束-->
+             
+            </ul>
+            <!--加载更多开始-->
         <div class="text-c mb-20" id="moreBlog">
             <a class="btn  radius btn-block " href="javascript:;" onclick="moreBlog();">点击加载更多</a>
             <a class="btn  radius btn-block hidden" href="javascript:;">加载中……</a>
         </div>
+            <!--加载更多结束-->
+
         </div>
   </div>
   
@@ -358,11 +200,9 @@
                 <a href=""><strong>隔壁邻居</strong></a>
             </div>
             <div class="tab-category-item">
-                <span><i class="Hui-iconfont"></i><a href="#" class="btn-link">百度</a></span>
-                <span><i class="Hui-iconfont"></i><a href="#" class="btn-link">淘宝</a></span>
-                <span><i class="Hui-iconfont"></i><a href="#" class="btn-link">腾讯</a></span>
-                <span><i class="Hui-iconfont"></i><a href="#" class="btn-link">慕课网</a></span>
-                <span><i class="Hui-iconfont"></i><a href="#" class="btn-link">h-ui</a></span>
+                @foreach($friend as $k=> $v)
+                <span><i class="Hui-iconfont"></i><a href="{{$v->friendly_https}}" class="btn-link">{{$v->title}}</a></span>
+              @endforeach
             </div>
         </div>
         <!--最近访客-->
