@@ -20,6 +20,7 @@ class HomeController extends Controller
         $friend=FriendlyLink::all();
 
         $articles_new=Articles::orderBy('created_at','desc')->get();
+
         foreach ($articles_new as $key => $value) {
             
             
@@ -27,7 +28,7 @@ class HomeController extends Controller
             $preg = "/<img(.*?)>/i"     ;
             $value['content'] = preg_replace($preg,'', $content);
         }
-      
+      //dump($articles_new);
        return view('home.index',['friend'=>$friend,'articles_new'=>$articles_new]);
     }
 
@@ -62,7 +63,7 @@ class HomeController extends Controller
     {
          session()->flush();
          session(['homeFlag'=>false]);
-         return view('home.index');
+         return redirect('/');
     }
 
     /**

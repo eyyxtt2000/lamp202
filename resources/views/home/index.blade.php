@@ -41,7 +41,7 @@
         <div class="art_content">
             <ul class="index_arc">
             <!--遍历最新文章开始-->
-            @foreach($articles_new as $v)
+            @foreach( $articles_new as $k => $v )
                 <li class="index_arc_item">
                     <a href="#" class="pic">
                         <img class="lazyload" data-original="temp/art.jpg" alt="应该选" src="temp/art.jpg" style="display: inline-block;">
