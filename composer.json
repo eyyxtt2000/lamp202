@@ -7,7 +7,8 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
-        "gregwar/captcha" : "v1.0.13"
+        "gregwar/captcha" : "v1.0.13",
+        "weboap/visitor": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -1,7 +1,7 @@
-@extends('home.layout.index')  
+@extends('home.layout.index')
 
 
-@section('content') 
+@section('content')
 
 <section class="container pt-20">
     <!--<div class="Huialert Huialert-info"><i class="Hui-iconfont">&#xe6a6;</i>成功状态提示</div>-->
@@ -13,7 +13,7 @@
                 <div class="bd">
                     <div class="tempWrap" style="overflow:hidden; position:relative; width:923px">
                     <ul style="width: 3692px; position: relative; overflow: hidden; padding: 0px; margin: 0px; left: -923px;">
-                    
+
                         <li class="clone" style="float: left; width: 923px;"><a href="#" target="_blank"><img src="/homeblog/img/temp/banner8.png"></a></li>
 
                         <li style="float: left; width: 923px;"><a href="#" target="_blank"><img src="/homeblog/img/temp/banner1.jpg"></a></li>
@@ -32,7 +32,7 @@
                 <a class="slider-arrow next" href="javascript:void(0)"></a>
             </div>
         </div>
-        
+
         <div class="mt-20 bg-fff box-shadow radius mb-5">
             <div class="tab-category">
                 <a href=""><strong class="current">最新发布</strong></a>
@@ -51,14 +51,13 @@
                         <span>{{$v->author}}</span>
                         <span>{{$v->created_at}}</span>
                         <span><a href="">栏目名称等你联查遍历</a></span>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
-                        <p class="commonts"><i class="Hui-iconfont" title="点击量"></i> <span class="cy_cmt_count">20</span></p>
+                        <p class="commonts"><i class="Hui-iconfont" title="点击量"></i> <span class="cy_cmt_count">{{ $v -> comment }}</span></p>
                     </div>
                     <div class="desc">{!! $v->content !!}</div>
                 </li>
             @endforeach
             <!--遍历最新文章结束-->
-             
+
             </ul>
             <!--加载更多开始-->
         <div class="text-c mb-20" id="moreBlog">
@@ -69,10 +68,10 @@
 
         </div>
   </div>
-  
+
   <!--right-->
   <div class="col-sm-3 col-md-3">
-    
+
     <!--站点声明-->
         <div class="panel panel-default mb-20">
             <div class="panel-body">
@@ -88,7 +87,7 @@
                 </div>
             </div>
         </div>
-        
+
     <!--博主信息-->
         <div class="bg-fff box-shadow radius mb-20">
             <div class="tab-category">
@@ -103,8 +102,8 @@
                 </ul>
             </div>
         </div>
-    
-    
+
+
     <!--热门推荐-->
         <div class="bg-fff box-shadow radius mb-20">
             <div class="tab-category">
@@ -112,30 +111,16 @@
             </div>
             <div class="tab-category-item">
                 <ul class="index_recd">
+                    @foreach($hot as $k => $v)
                     <li>
-                        <a href="#">1111阻止a标签href默认跳转事件</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 </p>
+                        <a href="/home/articledetail/{{$v->id}}">{{ $v -> title}}</a>
+                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> {{ $v -> comment}} </p>
                     </li>
-                    <li>
-                        <a href="#">222222PHP面试题汇总</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 </p>
-                    </li>
-                    <li>
-                        <a href="#">3333333阻止a标签href默认跳转事件</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 </p>
-                    </li>
-                    <li>
-                        <a href="#">444444阻止a标签href默认跳转事件</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 </p>
-                    </li>
-                    <li>
-                        <a href="#">555555PHP面试题汇总</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 </p>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
-        
+
         <!--点击排行-->
         <div class="bg-fff box-shadow radius mb-20">
             <div class="tab-category">
@@ -174,7 +159,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <!--标签-->
         <div class="bg-fff box-shadow radius mb-20">
             <div class="tab-category">
@@ -193,7 +178,7 @@
                 <img data-original="temp/gg.jpg" class="img-responsive lazyload" alt="响应式图片" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
             </div>
         </div>
-        
+
         <!--友情链接-->
         <div class="bg-fff box-shadow radius mb-20">
             <div class="tab-category">
@@ -225,7 +210,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <!--分享-->
         <div class="bg-fff box-shadow radius mb-20">
             <div class="tab-category">
@@ -235,17 +220,17 @@
                 <div class="bdsharebuttonbox Hui-share"><a href="#" class="bds_weixin Hui-iconfont" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone Hui-iconfont" data-cmd="qzone" title="分享到QQ空间"></a> <a href="#" class="bds_sqq Hui-iconfont" data-cmd="sqq" title="分享到QQ好友"></a> <a href="#" class="bds_tsina Hui-iconfont" data-cmd="tsina" title="分享到新浪微博"></a> <a href="#" class="bds_tqq Hui-iconfont" data-cmd="tqq" title="分享到腾讯微博"></a></div>
             </div>
         </div>
-    
-    
-    
+
+
+
 
   </div>
-  
+
 </section>
-@endsection   
-           
+@endsection
+
 
 
 @section('title')
     英雄联盟
-@endsection 
+@endsection
