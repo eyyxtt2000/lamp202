@@ -22,7 +22,7 @@ class HomeController extends Controller
         $friend=FriendlyLink::all();
         $hot = Articles::orderBy('comment','desc') -> take(5) -> get();
         $articles_new=Articles::orderBy('created_at','desc')->get();
-        foreach ($articles_new as $key => $value) {wxedecd
+        foreach ($articles_new as $key => $value) {
             $content = $value['content'];
             $preg = "/<img(.*?)>/i"     ;
             $value['content'] = preg_replace($preg,'', $content);
