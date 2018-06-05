@@ -60,4 +60,6 @@ Route::resource('/admin/advertise','Admin\AdvertiseController');
 Route::post('/admin/advertise/disable/{id}','Admin\AdvertiseController@disable');
 //启用广告位路由
 Route::post('/admin/advertise/able/{id}','Admin\AdvertiseController@able');
+//广告位分类路由
+Route::get('/admin/adclass','Admin\AdvertiseController@adclass');
 

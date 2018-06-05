@@ -250,4 +250,13 @@ class AdvertiseController extends Controller
         return redirect('/admin/advertise')->with('success','该广告已启用');
 
     }
+
+    //广告分类
+    public function adclass(Request $request)
+    {
+
+        return view('admin.advertise.class_create');
+
+    }
+
 }

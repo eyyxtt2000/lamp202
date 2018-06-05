@@ -34,6 +34,7 @@
 <link rel="stylesheet" type="text/css" href="/admin/css/mws-theme.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admin/css/themer.css" media="screen">
     <link href="/logo/2.png" type="image/x-iocn" rel="shortcut icon" />
+    <link rel="stylesheet" href="/layui/css/layui.css">
 <title>@yield('title')</title>
 <style type="text/css">
     .page ul,.page li{
@@ -83,6 +84,7 @@
 </head>
 
 <body>
+
 
 
     <!-- Header -->
@@ -197,6 +199,7 @@
                     <li class="active">
                         <a href="#"><i class="icon-list"></i>广告位</a>
                         <ul>
+                            <li><a href="/admin/adclass">广告分类</a></li>
                             <li><a href="/admin/advertise">广告列表</a></li>
                             <li><a href="/admin/advertise/create">广告添加</a></li>
                         </ul>
@@ -248,6 +251,7 @@
     <script src="/admin/js/core/themer.js"></script>
 
     <!-- Demo Scripts (remove if not needed) -->
+    <script src="/layui/layui.all.js"></script>
 
 </body>
 </html>
