@@ -22,30 +22,33 @@
                   </div>
                   <div class="mws-panel-body no-padding">
                     <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
-                      <div id="DataTables_Table_1_length" class="dataTables_length">
-                        <label>显示
-                          <select size="1" name="DataTables_Table_1_length" aria-controls="DataTables_Table_1">
-                            <option value="5" selected="selected">5</option>
-                            <option value="10" >10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option></select>条</label>
-                      </div>
-                      <div class="dataTables_filter" id="DataTables_Table_1_filter">
+                      <form action="/admin/articles" method="get" >
+                        <div id="DataTables_Table_1_length" class="dataTables_length">
+                            <label>显示
+                                <select name="count" size="1" name="DataTables_Table_1_length" aria-controls="DataTables_Table_1">
+                                    <option value="5" @if( isset($params) && !empty($params['count']) &&$params['count']==5) selected @endif>5</option>
+                                    <option value="10" @if( isset($params) && !empty($params['count']) &&$params['count']==10) selected @endif>10</option>
+                                    <option value="15" @if( isset($params) && !empty($params['count']) &&$params['count']==15) selected @endif>15</option>
+                                    <option value="20" @if( isset($params) && !empty($params['count']) &&$params['count']==20) selected @endif>20</option>
+                                </select>条</label>
+                        </div>
+                        <div class="dataTables_filter" id="DataTables_Table_1_filter">
 
-                            <form action="/admin/articles" method="get" >
-                               <label>搜索: <input type="text" name="for" aria-controls="DataTables_Table_1">
-                               <input type="submit"  value="提交" >
-                            </label></div>
-                         </form>
+                            <label>搜索: <input type="text" name="for" value="{{$params['for'] or ''}}">
+                                <input type="submit" class="btn btn-info" value="搜索" >
+                            </label>
+                        </div>
+                    </form>
 
 
 
                       <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
                         <tr>
                             <td>ID</td>
+                            <td>所属栏目</td>
                             <td>文章标题</td>
                             <td>文章作者</td>
-                            <td>所属标签</td>
+                            <td>文章图片</td>
                             <td>发表时间</td>
                             <td>更新时间</td>
                             <td>操作</td>
@@ -55,29 +58,20 @@
 
                         <tr>
                             <td>{{$v->id}}</td> 
+                            <td>{{$v->lanmu}}</td>
                             <td>{{$v->title}}</td>
                             <td>{{$v->author}}</td>
                             <td>
-                               @if($v->ftype == 0)
-                                <span>生活</span>
-                                @elseif($v->ftype == 1)
-                                <span>情感</span>
-                                 @elseif($v->ftype == 2)
-                                <span>军事</span>
-                                 @else
-                                <span>汽车</span>
-                               @endif
-                            </td >
+                                <img class="img-circle img-thumbnail img-responsive" style="width:50px; height:60px" src="{{url('/').$v->articles_image_path}}" alt="">
+                            </td>
                             <td>{{$v->created_at}}</td>
                             <td>{{$v->updated_at}}</td>
                             <td>
-                                <form action="/admin/articles/{{$v->id}}" method="post" style="display: inline;">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <input type="submit" value="删除" class="btn btn-danger">
-                                </form>
-
-                               <!--  <a href="/" class="btn btn-warning">修改</a> -->
+                          <form action="/admin/articles/{{$v->id}}" method="post" style="display: inline;">
+                              {{ csrf_field() }}
+                              {{ method_field('DELETE') }}
+                              <input type="submit" value="删除" class="btn btn-danger">
+                          </form>
 
                           <form action="/admin/articles/{{$v->id}}/edit" method="get"  style="display: inline;">
                               {{ csrf_field() }}

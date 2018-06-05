@@ -22,24 +22,34 @@
             <form class="mws-form" action="/admin/articles" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="mws-form-inline">
+                    
+                <div class="mws-form-inline">
                     <div class="mws-form-row">
-                        <label class="mws-form-label">所属标签</label>
+                        <label class="mws-form-label">所属栏目</label>
                         <div class="mws-form-item">
-                            <select class="small" name="ftype">
-                                <option value="0" selected>生活</option>
-                                <option value="1">情感</option>
-                                <option value="2">军事</option>
-                                <option value="3">汽车</option>
+                            <select class="small" name="lanmu">
+                                <option value="0">-- 请选择 --</option>
+                                @foreach($data as $k => $v)
+                                    <option value="{{ $v -> cname }}">{{ $v -> cname }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
-                <div class="mws-form-inline">
+                </div> 
                     <div class="mws-form-row">
                         <label class="mws-form-label">文章标题</label>
                         <div class="mws-form-item">
                             <input type="text" name="title" class="small" value="{{ old('title') }}">
                         </div>
                     </div>  
+                    
+                     
+                   <div class="mws-form-row" style="width: 800px;">
+                        <label class="mws-form-label">文章图片</label>
+                        <div class="mws-form-item" style="width: 465px;">
+                            <input type="file" name="image" class="small">
+                        </div>
+                    </div>
 
                     <div class="mws-form-row">
                         <label class="mws-form-label">文章内容</label>
@@ -49,9 +59,7 @@
                         </script>
                         </div>
                     </div>
-                   
-                    
-                <div class="mws-button-row">
+              <div class="mws-button-row">
                     <input type="submit" value="文章添加" class="btn btn-success">
                     <input type="reset" value="文章重置" class="btn btn-info">
                 </div>

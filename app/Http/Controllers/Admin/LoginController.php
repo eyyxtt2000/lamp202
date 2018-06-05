@@ -25,10 +25,10 @@ class LoginController extends Controller
 
     public function dologin(Request $request)
     {
-       $form= $request->except('_token');
-          
+        $form= $request->except('_token');
+
         $user = User::where('username',$form['username'])->first();
-      
+
           //如果数据库中没有此用户，返回登录页面
         if(!$user)
         {
@@ -43,10 +43,10 @@ class LoginController extends Controller
 
         $id=$user['id'];
         $res = Usersdetail::where('uid',$id)->first();
-       
 
-      
-      if ( $res['status'] == 0 ) {
+
+
+        if ( $res['status'] == 0 ) {
             return back()->withErrors('当前用户已被禁用，请您联系客服。') -> withInput();
         }
 
@@ -54,6 +54,7 @@ class LoginController extends Controller
         session(['adminUser'=>$user]);
 
         //登录时间
+
      /* $abc= DB::table('loginhistory')->insert(['uid'=>$user->uid,'loginTime'=>time(),'ip'=>$_SERVER['REMOTE_ADDR']]);*/
     /*  dd($abc);//true;*/
          return redirect('/admin/admin');
@@ -62,6 +63,9 @@ class LoginController extends Controller
         
 
         
+
+        return redirect('/admin/admin');
+
     }
 
      /**
@@ -71,9 +75,9 @@ class LoginController extends Controller
      */
     public function logout()
     {
-         session()->flush();
-         session(['adminFlag'=>false]);
-         return redirect('admin/login');
+        session()->flush();
+        session(['adminFlag'=>false]);
+        return redirect('admin/login');
     }
     /**
      * Show the form for creating a new resource.
@@ -93,7 +97,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**

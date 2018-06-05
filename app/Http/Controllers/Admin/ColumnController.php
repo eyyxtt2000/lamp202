@@ -37,9 +37,13 @@ class ColumnController extends Controller
     {
         // $sql = "select *,concat(path,',',id') as paths from column order by paths";
         $data = DB::table('column') -> select('id','cname','pid','path','status','created_at','updated_at',DB::raw("concat(path,',',id) as paths")) -> orderBy('paths','asc') -> get();
+
+            //dd($data);
         foreach ($data as $key => $value) {
+             
             // 统计字符串出现的次数
-            $n = substr_count($value -> paths,',');
+            $n = substr_count($value->paths,',');
+
             $data[$key] -> cname = str_repeat('|----',$n).$value -> cname;
         }
         return view('/admin/column/create',['data' => $data]);
