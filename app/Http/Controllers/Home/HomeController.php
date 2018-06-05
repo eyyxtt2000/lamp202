@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\FriendlyLink;
 use App\Models\Admin\Articles;
+use DB;
 class HomeController extends Controller
 {
     /**
@@ -17,6 +18,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //分配友链数据
         $friend=FriendlyLink::all();
 
         $articles_new=Articles::orderBy('created_at','desc')->get();
@@ -29,7 +31,23 @@ class HomeController extends Controller
             $value['content'] = preg_replace($preg,'', $content);
         }
       //dump($articles_new);
-       return view('home.index',['friend'=>$friend,'articles_new'=>$articles_new]);
+      //分配访客历史信息
+     // $query=" distinct(uid) ";
+        $visitor=DB::select('select distinct(uid) from history order by(loginTime) desc ');
+        $var=[];
+        foreach ($visitor as $k => $v) {
+            $uid=$v->uid;
+            $src=DB::select('select profile from users where id='.$uid);
+            
+            $var[$k]=$src;
+        }
+        
+
+       //dd('123');
+      //dd($var);
+
+      // dd($var);
+       return view('home.index',['friend'=>$friend,'articles_new'=>$articles_new,'var'=>$var]);
     }
 
     
@@ -51,12 +69,17 @@ class HomeController extends Controller
     }
       public function articledetail($id)
     {
+
+
+        $collect=DB::table('collect')->where('aid',$id)->where('uid',session('homeuser')['id'])->first();
+
         $detail=Articles::find($id);
         $previd= Articles::where('id', '<', $id)->max('id');
         $prev = Articles::find($previd);
         $nextid=Articles::where('id', '>', $id)->min('id');
         $next = Articles::find($nextid);
-        return view('home.articledetail', ['detail'=>$detail,'prev'=>$prev,'next'=>$next]);
+        return view('home.articledetail', ['collect'=>$collect,'detail'=>$detail,'prev'=>$prev,'next'=>$next]);
+
     }
 
      public function logout()

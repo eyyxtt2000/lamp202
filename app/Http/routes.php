@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 //验证码
 Route::get('/code','CodeController@makecode');
@@ -100,3 +98,14 @@ Route::post('/home/ajax1',function(){
    }
 
 });
+//邮箱激活路由
+Route::get('/home/jihuo','Home\LoginController@jihuo');
+//用户点击头像显示个人中心路由
+Route::get('/home/userinfo/userinfo',function(){
+    return view('home.userinfo.userinfo');
+});
+
+//添加收藏de 路由
+Route::get('/home/addcollection/{id}','Home\CollectController@add');
+//删除取消收藏的路由
+Route::get('home/delcollection/{id}','Home\CollectController@del');

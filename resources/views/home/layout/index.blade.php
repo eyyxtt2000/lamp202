@@ -89,7 +89,7 @@ layui.use(['layer', 'form'], function(){
                               {{session('homeuser')['username']}}
 
 
-                           <a href="javascript:;" ><img class="avatar radius"  src="{{ session('homeuser')['profile'] }}"  alt="博客"></a>
+                           <a href="/home/userinfo/userinfo" ><img class="avatar radius"  src="{{ session('homeuser')['profile'] }}"  alt="博客"></a>
                            <ul class="dropDown-menu menu radius box-shadow">
                                <li><a href="/home/logout">退出</a></li>
                            </ul>

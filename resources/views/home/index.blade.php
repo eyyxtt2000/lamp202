@@ -1,6 +1,4 @@
 @extends('home.layout.index')  
-
-
 @section('content') 
 
 <section class="container pt-20">
@@ -212,16 +210,12 @@
             </div>
             <div class="panel-body">
                 <ul class="recent">
-                    <div class="item"><img src="img/40.jpg" alt=""></div>
-                    <div class="item"><img src="img/40.jpg" alt=""></div>
-                    <div class="item"><img src="img/40.jpg" alt=""></div>
-                    <div class="item"><img src="img/40.jpg" alt=""></div>
-                    <div class="item"><img src="img/40.jpg" alt=""></div>
-                    <div class="item"><img src="img/40.jpg" alt=""></div>
-                    <div class="item"><img src="img/40.jpg" alt=""></div>
-                    <div class="item"><img src="img/40.jpg" alt=""></div>
-                    <div class="item"><img src="img/40.jpg" alt=""></div>
-                    <div class="item"><img src="img/40.jpg" alt=""></div>
+              @foreach($var as $k=>$v)
+                @foreach($v as $kk=>$vv)
+               
+                    <div class="item"><img style="width:40px;height:40px" src="{{$vv->profile}}" alt=""></div>
+                @endforeach
+             @endforeach
                 </ul>
             </div>
         </div>

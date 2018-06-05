@@ -9,7 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Home\Users;
 use App\Models\Home\UserDetail;
 use DB;
-use Illuminate\Support\Facades\Validator;
+use Mail;
+use Hash;
 class LoginController extends Controller
 {
     /**
@@ -78,6 +79,8 @@ class LoginController extends Controller
                 }
                 session(['homeFlag'=>true]);
                 session(['homeuser'=>$user]);
+               $abc= DB::table('history')->insert(['uid'=>$user->id,'loginTime'=>time()]);
+              //dd($abc);//true;
                 //dd($user->profile);
                 //dd(session('homeuser')['profile']);
                 
@@ -88,8 +91,7 @@ class LoginController extends Controller
       
 
        //登录时间
-      /* $abc= DB::table('loginhistory')->insert(['uid'=>$user->uid,'loginTime'=>time(),'ip'=>$_SERVER['REMOTE_ADDR']]);*/
-/*  dd($abc);//true;
+      
        
  
      
@@ -103,76 +105,104 @@ class LoginController extends Controller
 
 
    }    
-       
-       ///////////////////////////
-         //注册邮箱成功
-/*    public function postDoregister(Request $request)
-    {
-        $res = $request->   except('_token');
-        $rule = [
-            'email' => 'required|email|unique:user_details,emill',
+        public function postDoregister(Request $request)
+        {
+           /* echo'在这里处理注册信息';
+             //验证数据  // 将数据插入数据库
+             dump($request -> all());*/
+              $this->validate($request,[
+            'email' => 'required|email|unique:users_detail',
             'password' => 'required|between:6,12',
-            'repwd' => 'same:password',
-        ];
-        $msg = [
-            'email.required' => '用户名必填',
+            'repassword' => 'required|same:password',
+
+            ],[
+            'email.required' => '邮箱必填',
             'email.email' => '用户名格式不正确',
             'email.unique' => '该用户已注册',
             'password.required' => '密码必须输入',
+            'repassword.required' => '确认密码必须输入',
             'password.between' => '密码格式不正确',
-            'repwd.same' => '密码不一致',
-        ];
-        $validator = Validator::make($res,$rule,$msg);
-        //如果验证失败
+            'repassword.same' => '密码不一致',
+            ]);
 
-       // dd($validator);
-        if($validator->fails()){
-           /* return back() -> withErrors($validator) -> withInput();*/
-        /*   echo'1111';
-        }else{
-            echo'222';
+            
+
+            $email = $request -> input('email','1453175095@qq.com');
+            $pass = Hash::make($request -> input('password','123'));
+            $profile='/homeblog/img/qq.jpg';//给个默认头像
+            $token = str_random(50);
+            $id = Users::insertGetId(['profile'=>$profile,'username'=>$email,'password'=>$pass,'token'=>$token]);
+            UserDetail::insert(['email'=>$email,'uid'=>$id]);
+
+
+
+            // dd($id);
+
+            // 发送邮件
+            if($id > 0){
+                // 注册成功
+                self::sendEmail($email,$id,$token);
+                 return view('home.email.send',['time'=>date( 'Y年m月d日 H:i:s',time() )]);
+            }else{
+                // 注册失败
+                 return view('home.email.fail',['time'=>date( 'Y年m月d日 H:i:s',time() )]);
+                dd('注册失败');
+            }
         }
-           
-        //存放数据
-        $user = new Users();
-        $user -> uname = $res['email'];
-        $user -> password = \Crypt::encrypt($res['password']);
-        $user -> identity = 2;
-        $user -> save();
-        $id = $user -> uid;
-
-
-        $userdetail = new UserDetail();
-        $userdetail -> uid = $id;
-        $userdetail -> emill = $res['email'];
-        $userdetail -> status = 1;//1是启用,0是禁用
-        $userdetail -> user_token = $user -> password;
-        $userdetail -> save();
-        $userdetail -> uname = $user -> uname;
-
-        Mail::send('emails.active', ['user' => $userdetail], function ($m) use ($userdetail) {
-            $m->to($userdetail->emill,$userdetail -> uname)->subject('邮箱激活');
-        });
-
-        return view('home.login.login');
-
-    }*/
-    //邮箱激活
-    /*public function active(Request $request)
-    {
-        $userid =   $request->input('userid');
-        $token = $request->input('token');
-
-//      根据userid获取用户
-        $user =   UserDetail::find($userid);
-//      验证token是否有效
-        if($user->user_token == $token) {
-            $re = $user->update(['status' => 1]);
-        }
-        return view('home.login.login');
-    }*/
-   
  
+        public function jihuo(Request $request)
+            {
+              
+               // 接受id
+                $id = $request -> input('id','');
+                // 接受token
+                $token = $request -> input('token','');
+                // 通过id获取插入的对应数据
+                $user = Users::find($id);
+               // dd($user);
+                if(!$user){
+                     return view('home.email.fail',['time'=>date( 'Y年m月d日 H:i:s',time() )]);
+                    dd('连接非法');
+                }
+                // dump($user);
+               
+
+                // 检测该账户是否激活
+                if($user -> active == 2){
+                    $uid=$user->id;//获取details里的uid
+                    $email=DB::select("select email from users_detail where uid=".$uid);
+                  /* $email=$email[0]->email;
+                   $email=sprintf($email);
+                    //dd($email);*/
+                    date_default_timezone_set('PRC');
+                    return view('home.email.oready',['time'=>date( 'Y年m月d日 H:i:s',time() )]);
+                    dd('该账户已经激活，请不要重复激活');
+                }
+                // 激活
+                $user -> active  = 2;
+                $user -> token = str_random(50);
+                if($user -> save()){
+                    return view('home.email.success',['time'=>date( 'Y年m月d日 H:i:s',time() )]);
+                    dd('激活成功');
+                }else{
+                    return view('home.email.fail',['time'=>date( 'Y年m月d日 H:i:s',time() )]);
+                    dd('激活失败');
+                }
+                 // 检测连接的有效性
+                if($token != $user->token){
+                     return view('home.email.fail',['time'=>date( 'Y年m月d日 H:i:s',time() )]);
+                    dd('链接失效，请联系客服');
+                    exit;
+                }
+            } 
+
+            public static function sendEmail($email,$id,$token)
+            {
+                Mail::send('home.email.index', ['id' => $id,'token'=>$token,'email'=>$email], function ($m) use ($email) {
+                    $m->to($email)->subject('【JDQS】官方激活邮件!');
+                });
+            }  
+
            
   
     

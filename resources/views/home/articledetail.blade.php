@@ -14,7 +14,51 @@
                     <div class="panel panel-default  mb-20">
                         <div class="panel-body pt-10 pb-10">
                             <h2 class="c_titile">{{$detail->title}}</h2>
-                            <p class="box_c"><span class="d_time">发布时间：{{$detail->created_at}}</span><span>编辑：<a href="mailto:wfyv@qq.com">{{$detail->author}}</a></span><span>阅读（88646）</span></p>
+                        <!--   {{ dump($detail->id )}}
+                                                 {{ dump( session('homeuser')['id'] ) }}  -->
+                            <p class="box_c"><span class="d_time">发布时间：{{$detail->created_at}}</span><span>编辑：<a href="javascript:;">{{$detail->author}}</a></span>
+                                <span>阅读（88646）</span>
+
+                            @if( session('homeFlag') )
+
+                            @if(!$collect)
+                            <a href="/home/addcollection/{{$detail->id}}"><span id="collect" > + 收藏</span></a>
+                          @else
+                          <a href="/home/delcollection/{{$detail->id}}"><span id="collect" > 取消收藏</span></a>
+                         @endif
+
+                            @else
+                             <a href="javascript:;"><span > </span></a>
+                            @endif
+
+                            </p>
+                            <script type="text/javascript" src="/layui/jquery-3.2.1.min.js"></script>
+                            <script type="text/javascript" src="/layui/sessionjquery.js"></script>
+                            <script type="text/javascript">
+                         
+                        /*  var abc=$.session.get('homeuser');
+                          alert(abc);
+                         
+                               $(function () {
+                                    var offOn = true;
+                                    var $div = $("#collect");
+                                    $div.on('click', function () {
+                                        if ($div.offOn) { 
+
+                                            $div.css('color', '#333');
+                                            $div.html('+ 收藏');
+                                            $div.offOn = false;
+
+                                           
+
+                                        } else {
+                                            $div.css('color', '#ccc');
+                                            $div.html('取消收藏');
+                                            $div.offOn = true;
+                                        }
+                                    })
+                                })*/
+                            </script>
                             <ul class="infos">
                                      {!!$detail->content!!}
                                 

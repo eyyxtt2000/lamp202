@@ -12,7 +12,7 @@ class UserDetail extends Model
      * @var string
      */
     protected $table = 'users_detail';
-    protected $primarykey='id';
+    
    
      /**
      * 指定是否模型应该被戳记时间。
