@@ -41,7 +41,7 @@
             @foreach( $articles_new as $k => $v )
                 <li class="index_arc_item">
                     <a href="#" class="pic">
-                        <img class="lazyload" data-original="temp/art.jpg" alt="应该选" src="temp/art.jpg" style="display: inline-block;">
+                        <img class="lazyload" data-original="temp/art.jpg" alt="应该选" src="{{ $v -> articles_image_path }}" style="display: inline-block;width:165px;height:110px;">
                     </a>
                     <h4 class="title"><a href="/home/articledetail/{{$v->id}}">{{$v->title}}</a></h4>
                     <div class="date_hits">

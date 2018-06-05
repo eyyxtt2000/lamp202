@@ -5,7 +5,7 @@
     <div class="container">
         <i class="Hui-iconfont"></i><a href="/home/index" class="c-primary">首页</a>
        <!--  <span class="c-gray en">&gt;</span> <a href="article.html" class="c-primary">学无止尽</a> -->
-        <span class="c-gray en">&gt;</span> <span class="c-gray"><i class="Hui-iconfont"></i> 文章</span>
+        <span class="c-gray en">&gt;</span> <span class="c-gray">文章</span>
     </div>
 </nav>
 
@@ -18,7 +18,7 @@
                 @foreach($data as $k => $v)
                 <li class="index_arc_item">
                     <a href="#" class="pic">
-                        <img class="lazyload" data-original="temp/art.jpg" alt="应该选" src="temp/art.jpg" style="display: inline-block;">
+                        <img class="lazyload" data-original="temp/art.jpg" alt="应该选" src="{{ $v -> articles_image_path }}" style="display: inline-block;width:165px;height:110px;">
                     </a>
                     <h4 class="title"><a href="/home/articledetail/{{$v->id}}">{{ $v -> title }}</a></h4>
                     <div class="date_hits">

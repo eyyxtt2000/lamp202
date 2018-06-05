@@ -67,10 +67,7 @@ class LoginController extends Controller
         session(['adminUser'=>$user]);
 
         //登录时间
-        return redirect('/admin/admin');
-
      /* $abc= DB::table('loginhistory')->insert(['uid'=>$user->uid,'loginTime'=>time(),'ip'=>$_SERVER['REMOTE_ADDR']]);*/
-    /*  dd($abc);//true;*/
         return redirect('/admin/admin');//
             // return ('/home/index');
 
