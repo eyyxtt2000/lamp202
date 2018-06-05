@@ -19,6 +19,17 @@
 						<div class="login_title">
 							注册
 						</div>
+
+<!-- 显示错误的信息-->
+@if (count($errors) > 0)
+    <div class="mws-form-message error">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 						<form action="/home/login/doregister" method="post">
 							{{csrf_field()}}
 							 <div class="form_text_ipt">
@@ -34,10 +45,7 @@
 								<input name="repassword" type="password" placeholder="重复密码">
 							</div>
 							<div class="ececk_warning"><span>密码不能为空</span></div>
-							<div class="form_text_ipt">
-								<input name="code" type="text" placeholder="验证码">
-							</div>
-							<div class="ececk_warning"><span>验证码不能为空</span></div>
+							
 							
 							<div class="form_btn">
 								<button type="submit" >注册</button>

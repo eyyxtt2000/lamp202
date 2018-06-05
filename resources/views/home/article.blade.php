@@ -20,7 +20,7 @@
                     <a href="#" class="pic">
                         <img class="lazyload" data-original="temp/art.jpg" alt="应该选" src="temp/art.jpg" style="display: inline-block;">
                     </a>
-                    <h4 class="title"><a href="article_detail.html">{{ $v -> title }}</a></h4>
+                    <h4 class="title"><a href="/home/articledetail/{{$v->id}}">{{ $v -> title }}</a></h4>
                     <div class="date_hits">
                         <span>{{ $v -> author }}</span>
                         <span>{{ $v -> created_at }}</span>

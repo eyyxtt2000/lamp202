@@ -22,7 +22,19 @@
             <div class="panel panel-default  mb-20">
                 <div class="panel-body pt-10 pb-10">
                     <h2 class="c_titile">{{$detail->title}}</h2>
-                    <p class="box_c"><span class="d_time">发布时间：{{$detail->created_at}}</span><span>编辑：<a href="mailto:wfyv@qq.com">{{$detail->author}}</a></span><span>阅读（88646）</span></p>
+                    <p class="box_c"><span class="d_time">发布时间：{{$detail->created_at}}</span><span>编辑：<a href="mailto:wfyv@qq.com">{{$detail->author}}</a></span><span>阅读（88646）</span>
+                        @if( session('homeFlag') )
+
+                            @if(!$collect)
+                            <a href="/home/addcollection/{{$detail->id}}"><span id="collect" > + 收藏</span></a>
+                          @else
+                          <a href="/home/delcollection/{{$detail->id}}"><span id="collect" > 取消收藏</span></a>
+                         @endif
+
+                            @else
+                             <a href="javascript:;"><span > </span></a>
+                            @endif
+                    </p>
                     <ul class="infos">
                              {!!$detail->content!!}
 

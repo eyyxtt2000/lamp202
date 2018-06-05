@@ -10,6 +10,8 @@ use App\Models\Admin\FriendlyLink;
 use App\Models\Admin\Articles;
 use App\Models\Home\Comment;
 use App\Models\Admin\User;
+use DB;
+
 class HomeController extends Controller
 {
     /**
@@ -19,6 +21,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //分配友链数据
         $friend=FriendlyLink::all();
         $hot = Articles::orderBy('comment','desc') -> take(5) -> get();
         $articles_new=Articles::orderBy('created_at','desc')->get();
@@ -28,9 +31,17 @@ class HomeController extends Controller
             $value['content'] = preg_replace($preg,'', $content);
             $value['content'] = strip_tags($value['content']);
         }
+        // 分配访客历史信息
+        $visitor=DB::select('select distinct(uid) from history order by(loginTime) desc limit 15');
+        $var=[];
+        foreach ($visitor as $k => $v) {
+            $uid=$v->uid;
+            $src=DB::select('select profile from users where id='.$uid);
 
-      //dump($articles_new);
-       return view('home.index',['friend'=>$friend,'articles_new'=>$articles_new,'hot' => $hot]);
+            $var[$k]=$src;
+        }
+
+       return view('home.index',['friend'=>$friend,'articles_new'=>$articles_new,'var'=>$var,'hot' => $hot]);
     }
 
 
@@ -68,16 +79,19 @@ class HomeController extends Controller
     }
       public function articledetail($id)
     {
+
         $comment = Comment::where('aid',$id)->orderby('created_at','desc')->get();
         foreach ($comment as $k => $v) {
             $comment[$k] -> content = strip_tags($comment[$k] -> content);
         }
+        $collect=DB::table('collect')->where('aid',$id)->where('uid',session('homeuser')['id'])->first();
+
         $detail=Articles::find($id);
         $previd= Articles::where('id', '<', $id)->max('id');
         $prev = Articles::find($previd);
         $nextid=Articles::where('id', '>', $id)->min('id');
         $next = Articles::find($nextid);
-        return view('home.articledetail', ['detail'=>$detail,'prev'=>$prev,'next'=>$next,'comment'=>$comment]);
+        return view('home.articledetail', ['detail'=>$detail,'prev'=>$prev,'next'=>$next,'comment'=>$comment,'collect'=>$collect]);
     }
 
     public function comment(Request $request,$id)
@@ -119,6 +133,9 @@ class HomeController extends Controller
         }else{
             return back() -> with('error','评论失败');
         }
+
+        return view('home.articledetail', ['collect'=>$collect,'detail'=>$detail,'prev'=>$prev,'next'=>$next]);
+
     }
 
      public function logout()

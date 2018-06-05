@@ -14,5 +14,9 @@ class Users extends Model
           return $this->hasOne('App\Models\Home\UserDetail','uid');
 
      }
+      public function articles()
+     {
+        return $this->hasMany('App\Models\Admin\Articles','uid');
+     }
 
 }
