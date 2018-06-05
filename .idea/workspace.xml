@@ -14,20 +14,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../app/Http/routes.php">
+      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../resources/views/admin/layout/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="728">
-              <caret line="63" column="62" selection-start-line="63" selection-start-column="55" selection-end-line="63" selection-end-column="62" />
+            <state relative-caret-position="620">
+              <caret line="248" column="49" lean-forward="true" selection-start-line="248" selection-start-column="49" selection-end-line="248" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdvertiseController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../app/Http/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="620">
+              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdvertiseController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../app/Http/Controllers/Admin/AdvertiseController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="530">
-              <caret line="165" column="51" lean-forward="true" selection-start-line="165" selection-start-column="51" selection-end-line="165" selection-end-column="51" />
+            <state relative-caret-position="296">
+              <caret line="236" column="24" lean-forward="true" selection-start-line="236" selection-start-column="24" selection-end-line="236" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -118,11 +127,11 @@
         <option value="$PROJECT_DIR$/resources/views/admin/layout/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" />
         <option value="$PROJECT_DIR$/../app/Http/Controllers/Admin/UsersController.php" />
-        <option value="$PROJECT_DIR$/../app/Http/routes.php" />
         <option value="$PROJECT_DIR$/../app/Http/Controllers/Admin/AdvertiseController.php" />
-        <option value="$PROJECT_DIR$/../resources/views/admin/layout/index.blade.php" />
         <option value="$PROJECT_DIR$/../resources/views/admin/links/index.blade.php" />
         <option value="$PROJECT_DIR$/../resources/views/admin/advertise/class_create.blade.php" />
+        <option value="$PROJECT_DIR$/../app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/../resources/views/admin/layout/index.blade.php" />
       </list>
     </option>
   </component>
@@ -243,7 +252,60 @@
               <item name="." type="b2602c69:ProjectViewProjectNode" />
               <item name="lamp202" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="lamp202" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="lamp202" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="lamp202" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Providers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="lamp202" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="lamp202" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="lamp202" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="lamp202" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="advertise" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="lamp202" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
@@ -309,12 +371,12 @@
       <workItem from="1527923390617" duration="70000" />
       <workItem from="1527927117217" duration="3118000" />
       <workItem from="1527934106987" duration="3223000" />
-      <workItem from="1527947213750" duration="8117000" />
+      <workItem from="1527947213750" duration="8408000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74610000" />
+    <option name="totallyTimeSpent" value="74901000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1366" y="-2" width="1920" height="1082" extended-state="6" />
@@ -557,20 +619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../resources/views/admin/layout/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="251" selection-start-line="251" selection-end-line="251" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="63" column="62" selection-start-line="63" selection-start-column="55" selection-end-line="63" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../resources/views/admin/links/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
@@ -627,8 +675,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../app/Http/Controllers/Admin/AdvertiseController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="165" column="51" lean-forward="true" selection-start-line="165" selection-start-column="51" selection-end-line="165" selection-end-column="51" />
+        <state relative-caret-position="296">
+          <caret line="236" column="24" lean-forward="true" selection-start-line="236" selection-start-column="24" selection-end-line="236" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../resources/views/admin/layout/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="248" column="49" lean-forward="true" selection-start-line="248" selection-start-column="49" selection-end-line="248" selection-end-column="49" />
         </state>
       </provider>
     </entry>
