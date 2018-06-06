@@ -1,4 +1,4 @@
-@extends('home.layout.index')     
+@extends('home.layout.index')
 @section('content')
 <head>
 
@@ -18,150 +18,29 @@
 <section class="container mt-20">
     <div class="container-fluid">
         <div class="timeline">
-            
-                    <div class="cd-timeline-block">
-                        <div class="cd-timeline-img cd-picture">
-                            <img src="/homeblog/css/timeline/cd-icon-location.svg" alt="position">
-                        </div>
-                        <div class="cd-timeline-content">
-                            <h4>测试测试</h4>
-                            <p>Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。</p>
-                            <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
-                            <span class="cd-date">2017年1月01日</span>
-                        </div>
+            @foreach($data as $k => $v)
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-picture">
+                        <img src="/homeblog/css/timeline/cd-icon-location.svg" alt="position">
                     </div>
-                    <div class="cd-timeline-block">
-                        <div class="cd-timeline-img cd-picture">
-                            <img src="/homeblog/css/timeline/cd-icon-location.svg" alt="position">
-                        </div>
-                        <div class="cd-timeline-content">
-                            <h4>测试测试</h4>
-                            <p>Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。</p>
-                            <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
-                            <span class="cd-date">2017年1月01日</span>
-                        </div>
+                    <div class="cd-timeline-content">
+                        <h4>{{ $v -> title }}</h4>
+                        <p> {!! $v -> content !!} </p>
+                        <a href="/home/articledetail/{{ $v -> id }}" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
+                        <span class="cd-date">{{ $v -> created_at }}</span>
                     </div>
-                    <div class="cd-timeline-block">
-                        <div class="cd-timeline-img cd-picture">
-                            <img src="/homeblog/css/timeline/cd-icon-location.svg" alt="position">
-                        </div>
-                        <div class="cd-timeline-content">
-                            <h4>测试测试</h4>
-                            <p>Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。</p>
-                            <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
-                            <span class="cd-date">2017年1月01日</span>
-                        </div>
-                    </div>
-                    <div class="cd-timeline-block">
-                        <div class="cd-timeline-img cd-picture">
-                            <img src="/homeblog/css/timeline/cd-icon-location.svg" alt="position">
-                        </div>
-                        <div class="cd-timeline-content">
-                            <h4>测试测试</h4>
-                            <p>Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。</p>
-                            <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
-                            <span class="cd-date">2017年1月01日</span>
-                        </div>
-                    </div>
-                    <div class="cd-timeline-block">
-                        <div class="cd-timeline-img cd-picture">
-                            <img src="/homeblog/css/timeline/cd-icon-location.svg" alt="position">
-                        </div>
-                        <div class="cd-timeline-content">
-                            <h4>测试测试</h4>
-                            <p>Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。</p>
-                            <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
-                            <span class="cd-date">2017年1月01日</span>
-                        </div>
-                    </div>
-                    <div class="cd-timeline-block">
-                        <div class="cd-timeline-img cd-picture">
-                            <img src="/homeblog/css/timeline/cd-icon-location.svg" alt="position">
-                        </div>
-                        <div class="cd-timeline-content">
-                            <h4>测试测试</h4>
-                            <p>Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。</p>
-                            <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
-                            <span class="cd-date">2017年1月01日</span>
-                        </div>
-                    </div>
-                    <div class="cd-timeline-block">
-                        <div class="cd-timeline-img cd-picture">
-                            <img src="/homeblog/css/timeline/cd-icon-location.svg" alt="position">
-                        </div>
-                        <div class="cd-timeline-content">
-                            <h4>测试测试</h4>
-                            <p>Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。</p>
-                            <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
-                            <span class="cd-date">2017年1月01日</span>
-                        </div>
-                    </div>
-                    <div class="cd-timeline-block">
-                        <div class="cd-timeline-img cd-picture">
-                            <img src="/homeblog/css/timeline/cd-icon-location.svg" alt="position">
-                        </div>
-                        <div class="cd-timeline-content">
-                            <h4>测试测试</h4>
-                            <p>Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。</p>
-                            <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
-                            <span class="cd-date">2017年1月01日</span>
-                        </div>
-                    </div>
-                    <div class="cd-timeline-block">
-                        <div class="cd-timeline-img cd-picture">
-                            <img src="/homeblog/css/timeline/cd-icon-location.svg" alt="position">
-                        </div>
-                        <div class="cd-timeline-content">
-                            <h4>测试测试</h4>
-                            <p>Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。</p>
-                            <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
-                            <span class="cd-date">2017年1月01日</span>
-                        </div>
-                    </div>
-                    <div class="cd-timeline-block">
-                        <div class="cd-timeline-img cd-picture">
-                            <img src="/homeblog/css/timeline/cd-icon-location.svg" alt="position">
-                        </div>
-                        <div class="cd-timeline-content">
-                            <h4>测试测试</h4>
-                            <p>Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。</p>
-                            <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
-                            <span class="cd-date">2017年1月01日</span>
-                        </div>
-                    </div>
-                    <div class="cd-timeline-block">
-                        <div class="cd-timeline-img cd-picture">
-                            <img src="/homeblog/css/timeline/cd-icon-location.svg" alt="position">
-                        </div>
-                        <div class="cd-timeline-content">
-                            <h4>测试测试</h4>
-                            <p>Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。</p>
-                            <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
-                            <span class="cd-date">2017年1月01日</span>
-                        </div>
-                    </div>
-                    <div class="cd-timeline-block">
-                        <div class="cd-timeline-img cd-picture">
-                            <img src="/homeblog/css/timeline/cd-icon-location.svg" alt="position">
-                        </div>
-                        <div class="cd-timeline-content">
-                            <h4>测试测试</h4>
-                            <p>Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。Lao王博客测试版本上线。。</p>
-                            <a href="http://www.wfyvv.com" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
-                            <span class="cd-date">2017年1月01日</span>
-                        </div>
-                    </div>
-                    
+                </div>
+            @endforeach
         </div>
     </div>
 
 </section>
 
 
-@endsection   
-           
+@endsection
+
 
 
 @section('title')
     英雄联盟
-@endsection 
+@endsection

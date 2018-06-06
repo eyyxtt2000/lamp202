@@ -33,7 +33,8 @@
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/admin/css/mws-theme.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admin/css/themer.css" media="screen">
-
+    <link href="/logo/2.png" type="image/x-iocn" rel="shortcut icon" />
+    <link rel="stylesheet" href="/layui/css/layui.css">
 <title>@yield('title')</title>
 <style type="text/css">
     .page ul,.page li{
@@ -83,6 +84,7 @@
 </head>
 
 <body>
+
 
 
     <!-- Header -->
@@ -206,25 +208,21 @@
         </div>
         
         <!-- 内容开始-->
-        <div id="mws-container" class="clearfix">
-            
+        <div id="mws-container" class="clearfix"> 
             <!-- 内容开始 -->
             <div class="container">
             @section('content')
             @show
             </div>
-            <!-- 内容结束-->
-                       
-            <!-- Footer -->
-            <div id="mws-footer">
-                Copyright Your Website 2012. All Rights Reserved.
-            </div>
-            
+            <!-- 内容结束-->   
+        </div>
+        <div id="mws-footer">
+            Copyright Your Website 2012. All Rights Reserved.
         </div>
         <!-- 内容结束 -->
+     </div>   
+         <!-- Footer -->
         
-    </div>
-
     <!-- JavaScript Plugins -->
     <script src="/admin/js/libs/jquery-1.8.3.min.js"></script>
     <script src="/admin/js/libs/jquery.mousewheel.min.js"></script>
@@ -248,6 +246,7 @@
     <script src="/admin/js/core/themer.js"></script>
 
     <!-- Demo Scripts (remove if not needed) -->
+    <script src="/layui/layui.all.js"></script>
 
 </body>
 </html>

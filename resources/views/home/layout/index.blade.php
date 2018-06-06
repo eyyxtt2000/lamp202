@@ -25,6 +25,8 @@
 <!--引入layer弹窗开始做登录-->
 <link href="/homelog/layui/css/layui.css" rel="stylesheet" type="text/css" />
 
+<link rel="stylesheet" type="text/css" href="/layui/css/layui.all.css">
+<script type="text/javascript" src="/layui/layui.js"></script>
 <!--引入layer弹窗结束做登录-->
 
 
@@ -41,8 +43,6 @@
 layui.use(['layer', 'form'], function(){
   var layer = layui.layer
   ,form = layui.form;
-
-  layer.msg('Hello World');
 });
 
 
@@ -52,30 +52,27 @@ layui.use(['layer', 'form'], function(){
 </head>
 <body>
 
-
 <header class="navbar-wrapper">
-    <div class="navbar navbar-fixed-top">
-        <div class="container cl">
-            <a class="navbar-logo hidden-xs" href="/">
-                <img class="logo" src="/homeblog/img/logo.png" alt="个人博客" />
-            </a>
-            <a class="logo navbar-logo-m visible-xs" href="index.html">个人博客</a>
-            <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:void(0);" onclick="showSide();">&#xe667;</a>
-            <nav class="nav navbar-nav nav-collapse w_menu" role="navigation">
-                <ul class="cl">
-                    <li class="active"> <a href="/" data-hover="首页">首页</a> </li>
-                    <li> <a href="/home/about" data-hover="关于我们">关于我们</a> </li>
-                    <li> <a href="/home/mood" data-hover="妙语连珠">妙语连珠</a> </li>
-                    <li><a href="/home/article" data-hover="文章阅读">文章阅读</a></li>
-                    <li> <a href="/home/board" data-hover="留言板">留言板</a> </li>
-                </ul>
-            </nav>
-            <nav class="navbar-nav navbar-userbar hidden-xs hidden-sm " style="top: 0;">
-                <ul class="cl">
-                    <li class="userInfo dropDown dropDown_hover">
-
-                     @if( session('homeuser') )
-
+  <div class="navbar navbar-fixed-top">
+    <div class="container cl">
+      <a class="navbar-logo hidden-xs" href="/">
+        <img class="logo" src="/homeblog/img/logo.png" alt="个人博客" />
+      </a>
+      <a class="logo navbar-logo-m visible-xs" href="index.html">个人博客</a>
+      <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:void(0);" onclick="showSide();">&#xe667;</a>
+      <nav class="nav navbar-nav nav-collapse w_menu" role="navigation">
+        <ul class="cl">
+          <li class="active"> <a href="/" data-hover="首页">首页</a> </li>
+          <li> <a href="/home/about" data-hover="关于我们">关于我们</a> </li>
+          <li> <a href="/home/mood" data-hover="妙语连珠">妙语连珠</a> </li>
+          <li><a href="/home/article" data-hover="文章阅读">文章阅读</a></li>
+          <li> <a href="/home/board" data-hover="留言板">留言板</a> </li>
+        </ul>
+      </nav>
+      <nav class="navbar-nav navbar-userbar hidden-xs hidden-sm " style="top: 0;">
+        <ul class="cl">
+          <li class="userInfo dropDown dropDown_hover">
+            @if( session('homeuser') )
             <?php
               date_default_timezone_set('Asia/Shanghai');
               $h=date("H");
@@ -83,58 +80,41 @@ layui.use(['layer', 'form'], function(){
               else if($h<13) echo "中午好！";
               else if($h<17) echo "下午好！";
               else echo "晚上好！";
-
               ?>
+                {{session('homeuser')['username']}}
+                  <a href="/home/userinfo/userinfo" ><img class="avatar radius"  src="{{ session('homeuser')['profile'] }}"  alt="博客"></a>
+                  <ul class="dropDown-menu menu radius box-shadow">
+                    <li><a href="/home/logout">退出</a></li>
+                  </ul>
+            @else
+              <a href="#" onclick="return tan()" ><img class="avatar size-S" src="/homeblog/img/qq.jpg" title="登入">登入</a>
+            @endif
+          </li>
+      </ul>
+        <script type="text/javascript">
+          function tan()
+          {
+            var index = layer.open({
+                type: 2,
 
-                              {{session('homeuser')['username']}}
-
-
-                           <a href="/home/userinfo/userinfo" ><img class="avatar radius"  src="{{ session('homeuser')['profile'] }}"  alt="博客"></a>
-                           <ul class="dropDown-menu menu radius box-shadow">
-                               <li><a href="/home/logout">退出</a></li>
-                           </ul>
-                    @else
-
-                             <a href="#" onclick="return tan()" ><img class="avatar size-S" src="/homeblog/img/qq.jpg" title="登入">登入</a>
-                     @endif
-
-
-                    </li>
-                </ul>
-                  <script type="text/javascript">
-
-
-                            function tan()
-                            {
-                                    var index = layer.open({
-                                        type: 2,
-
-                                        content: '/home/login/login',
-                                        area: ['600px', '500px'],
-                                        title: false,
-                                        maxmin: true,
-                                        closeBtn: 0
-                                                });
-
-
-                                layer.full(index);
-                            }
-
-
-
-                            </script>
-            </nav>
-        </div>
+                content: '/home/login/login',
+                area: ['600px', '500px'],
+                title: false,
+                maxmin: true,
+                closeBtn: 0
+                        });
+            layer.full(index);
+          }
+        </script>
+      </nav>
     </div>
+  </div>
 </header>
 
- <!-- 内容开始 -->
-
-            @section('content')
-            @show
-
-            <!-- 内容结束-->
-
+<!-- 内容开始 -->
+@section('content')
+@show
+<!-- 内容结束-->
 
 <footer class="footer mt-20">
     <div class="container-fluid" id="foot">
@@ -143,20 +123,6 @@ layui.use(['layer', 'form'], function(){
         </p>
     </div>
 </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script type="text/javascript" src="/homeblog/plugin/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="/homeblog/plugin/layer/3.0/layer.js"></script>

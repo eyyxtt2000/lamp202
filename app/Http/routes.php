@@ -79,6 +79,9 @@ route::get('/home/article','Home\HomeController@article');
 route::get('/home/mood','Home\HomeController@mood');
 //前台文章详情表路由
 route::get('/home/articledetail/{id}','Home\HomeController@articledetail');
+// 前台评论
+route::post('/home/articledetail/{id}','Home\HomeController@comment');
+route::post('/home/comment/{id}','Home\HomeController@recomment');
 
 //前台登录
 Route::controller('/home/login','Home\LoginController');
@@ -108,7 +111,11 @@ Route::get('/home/userinfo/userinfo',function(){
 //添加收藏de 路由
 Route::get('/home/addcollection/{id}','Home\CollectController@add');
 //删除取消收藏的路由
+
 Route::get('/home/delcollection/{id}','Home\CollectController@del');
 //layer上传的路由
 Route::post('/home/ler/uploads','Home\LerController@uploads');
+
+
+
 

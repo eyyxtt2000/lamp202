@@ -18,13 +18,17 @@ class ColumnController extends Controller
      */
     public function index(Request $request)
     {
+        // 获取搜索的关键字
         $ss = $request -> input('sousuo');
+        // 获取数据,按paths排序,每页显示5条
         $data = DB::table('column') -> select('id','cname','pid','path','status','created_at','updated_at',DB::raw("concat(path,',',id) as paths")) -> where('cname','like','%'.$ss.'%') -> orderBy('paths','asc') -> paginate(5);
         foreach ($data as $key => $value) {
             // 统计字符串出现的次数
             $n = substr_count($value -> paths,',');
+            // 拼接新的栏目名称
             $data[$key] -> cname = str_repeat('|----',$n).$value -> cname;
         }
+        // 显示模板
         return view('/admin/column/index',['data' => $data]);
     }
 
@@ -35,13 +39,19 @@ class ColumnController extends Controller
      */
     public function create()
     {
-        // $sql = "select *,concat(path,',',id') as paths from column order by paths";
+        // 获取所属栏目数据,按paths排序
         $data = DB::table('column') -> select('id','cname','pid','path','status','created_at','updated_at',DB::raw("concat(path,',',id) as paths")) -> orderBy('paths','asc') -> get();
+
         foreach ($data as $key => $value) {
+
             // 统计字符串出现的次数
             $n = substr_count($value -> paths,',');
+            // 拼接新的栏目名称
+            $n = substr_count($value->paths,',');
+
             $data[$key] -> cname = str_repeat('|----',$n).$value -> cname;
         }
+        // 显示添加模板
         return view('/admin/column/create',['data' => $data]);
     }
 
@@ -53,22 +63,26 @@ class ColumnController extends Controller
      */
     public function store(Request $request)
     {
+        // 判断字段的合法性
         $this -> validate($request,[
                 'cname' => 'required|unique:column',
             ],[
                 'cname.required' => '栏目名称不能为空',
                 'cname.unique' => '栏目名称重复',
             ]);
+        // 获取父栏目ID,没有选择默认为0
         $pid = $request -> input('pid',0);
         if ($pid == 0) {
             // 顶级分类
             $path = 0;
         }else{
             // 子分类
+            // 查找父类的ID
             $parent_data = Column::where('id',$pid) -> first();
+            // 拼接子栏目的path
             $path = $parent_data['path'].','.$parent_data['id'];
         }
-
+        // 添加到数据库
         $column = new Column;
         $column -> cname = $request -> input('cname');
         $column -> pid = $pid;
@@ -100,13 +114,17 @@ class ColumnController extends Controller
      */
     public function edit($id)
     {
+        // 获取数据
         $data = Column::find($id);
+        // 获取所属栏目数据,按paths排序
         $datas = DB::table('column') -> select('id','cname','pid','path','status','created_at','updated_at',DB::raw("concat(path,',',id) as paths")) -> orderBy('paths','asc') -> get();
         foreach ($datas as $key => $value) {
             // 统计字符串出现的次数
             $n = substr_count($value -> paths,',');
+            // 拼接新的栏目名称
             $datas[$key] -> cname = str_repeat('|----',$n).$value -> cname;
         }
+        // 显示需要修改的数据到模板
         return view('/admin/column/edit',['data' => $data,'datas' => $datas]);
     }
 
@@ -119,27 +137,31 @@ class ColumnController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // 判断字段的合法性
         $this -> validate($request,[
                 'cname' => 'required',
             ],[
                 'cname.required' => '栏目名称不能为空',
             ]);
+        // 查找PID等于该ID的子栏目
         $column = Column::where('pid',$id) -> first();
         if ($column) {
             return redirect('/admin/column') -> with('error','该分类下有子分类,不允许修改');
             exit;
         }
-
+        // 获取父栏目ID,没有选择默认为0
         $pid = $request -> input('pid',0);
         if ($pid == 0) {
             // 顶级分类
             $path = 0;
         }else{
             // 子分类
+            // 查找父类的ID
             $parent_data = Column::where('id',$pid) -> first();
+            // 拼接子分类的path
             $path = $parent_data['path'].','.$parent_data['id'];
         }
-
+        // 修改数据添加到数据库
         $column = Column::find($id);
         $column -> cname = $request -> input('cname');
         $column -> pid = $pid;
@@ -167,6 +189,7 @@ class ColumnController extends Controller
             return redirect('/admin/column') -> with('error','该分类下有子分类,不允许删除');
             exit;
         }
+        // 从数据库删除数据
         $res = Column::destroy($id);
         if ($res) {
             return redirect('/admin/column') -> with('success','删除成功');

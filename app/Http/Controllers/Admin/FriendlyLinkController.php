@@ -178,23 +178,20 @@ class FriendlyLinkController extends Controller
         //用模型方法修改数据，获取当前id对应的数据
         $friendlylinks = FriendlyLink::find($id);
 
-
         //在更新图片之前获取原图片地址
         $filePath=$friendlylinks->image_path;
 
 
 
 
-
-        //向friendlylinks数据表中添加title
-        $friendlylinks->title = $data['title'];
-
         //向friendlylinks数据表中添加friendly_https
         $friendlylinks->friendly_https = $data['friendly_https'];
 
         if($request->hasFile('image')) {
             //判断是否有文件上传
-            //向friendlylinks数据表中添加image_path
+            //向friendlylinks数据表中添加image_path,并删除原图片
+
+            unlink('.'.$filePath);
             $friendlylinks->image_path = $data['image_path'];
         }
         //向friendlylinks数据表中添加status
@@ -219,8 +216,19 @@ class FriendlyLinkController extends Controller
     //删除数据
     public function destroy($id)
     {
+
+        //用模型方法修改数据，获取当前id对应的数据
+        $friendly_link = FriendlyLink::find($id);
+
+        //在删除图片之前获取原图片地址
+        $filePath=$friendly_link->image_path;
+
+
         $res=FriendlyLink::destroy($id);
         if($res){
+
+            unlink('.'.$filePath);
+
             return redirect('/admin/friendlylink')->with('success','删除成功');
         }else{
             return back()->with('error','删除失败');

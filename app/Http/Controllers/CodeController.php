@@ -15,22 +15,22 @@ class CodeController extends Controller
     
         public function makecode()
         {
-    //生成验证码图片的Builder对象，配置相应属性
+        // 生成验证码图片的Builder对象，配置相应属性
         $builder = new CaptchaBuilder;
-        //可以设置图片宽高及字体
+        // 可以设置图片宽高及字体
         $code= $builder->build(3);
         $builder->build($width = 115, $height = 45, $font = null);
-        //获取验证码的内容
+        // 获取验证码的内容
         $phrase = $builder->getPhrase();
 
-        //把内容存入session
-       session(['code'=>$phrase]);
-        //生成图片
+        // 把内容存入session
+        session(['code'=>$phrase]);
+        // 生成图片
         header("Cache-Control: no-cache, must-revalidate");
         header('Content-Type: image/jpeg');
-       
-         return $builder->output();
-         }
+        dd(session('code'));
+        return $builder->output();
+        }
 
     /**
      * Show the form for creating a new resource.
@@ -47,8 +47,8 @@ class CodeController extends Controller
      */
     public function store(Request $request)
     {
-        //验证验证码 
-       $res= checkcode($request->input('code'));
+        // 验证验证码 
+        $res= checkcode($request->input('code'));
         dump($res);
         dd($request->all());
     }
