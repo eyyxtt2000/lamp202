@@ -99,7 +99,6 @@ class UsersController extends Controller
         // 存放数据
         $user = new User;
 
-
         $data = [
             'profile' => $name,  // 图片路径存放
             'username' => $request -> input('username',''),
@@ -121,6 +120,7 @@ class UsersController extends Controller
         $userdetail -> status = $request -> input('status');  // 用户默认开启
 
         $res2 = $userdetail -> save();
+
 
         if($uid && $res2){
             return redirect('/admin/users') -> with('success','添加成功');

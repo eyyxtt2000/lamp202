@@ -46,11 +46,13 @@ class AdvertiseController extends Controller
     //处理添加页面提交的信息
     public function store(StoreAdvertise $request)
     {
+
         //接收所有数据
         $data = $request;
 
         //处理上传图片
         if($request->hasFile('image')){
+
 
             //获取上传图片信息
             $image=$request->file('image');
@@ -96,6 +98,9 @@ class AdvertiseController extends Controller
 
         //如果向数据库中插入数据成功，移动图片
         if($res){
+
+
+
             //将图片移动到框架中             路径  ，  名称
             $image->move('.'.$dir_name,$temp_name);
         }
@@ -157,6 +162,7 @@ class AdvertiseController extends Controller
             //echo $name;
 
             //将图片移动到框架中 ./links_images...
+
             $image->move('.'.$dir_name,$temp_name);
 
             //把文件路径存到数据中然后下一步扔进数据库
@@ -168,34 +174,22 @@ class AdvertiseController extends Controller
         //用模型方法修改数据，获取当前id对应的数据
         $advertise = Advertise::find($id);
 
-
         //在更新图片之前获取原图片地址
         $filePath=$advertise->image_path;
 
 
 
-
-
-        //向advertises数据表中添加title
-        $advertise->title = $data['title'];
-
         //向advertises数据表中添加advertise_https
         $advertise->advertise_https = $data['advertise_https'];
 
+        //如果传数据了
         if($request->hasFile('image')) {
-            //判断是否有文件上传
-            //向advertises数据表中添加image_path
+
+            unlink('.'.$filePath);
             $advertise->image_path = $data['image_path'];
         }
 
-        //如果有图片上传，并且图片上传成功
-//        if($res){
-//            //将图片移动到框架中 ./links_images...
-//            $image->move('.'.$dir_name,$temp_name);
-//        }
-
-
-        //向advertises数据表中添加status
+       //向advertises数据表中添加status
         $advertise->status = $data['status'];
 
         //保存
@@ -214,12 +208,20 @@ class AdvertiseController extends Controller
     }
 
 
-    //删除
+    //删除广告
     public function destroy($id)
     {
 
+        //用模型方法修改数据，获取当前id对应的数据
+        $advertise = Advertise::find($id);
+
+        //在删除图片之前获取原图片地址
+        $filePath=$advertise->image_path;
+
+
         $res=Advertise::destroy($id);
         if($res){
+            unlink('.'.$filePath);
             return redirect('/admin/advertise')->with('success','删除成功');
         }else{
             return back()->with('error','删除失败');
@@ -248,4 +250,13 @@ class AdvertiseController extends Controller
         return redirect('/admin/advertise')->with('success','该广告已启用');
 
     }
+
+    //广告分类
+    public function adclass(Request $request)
+    {
+
+        return view('admin.advertise.class_create');
+
+    }
+
 }

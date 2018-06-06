@@ -41,7 +41,6 @@
                     </form>
 
 
-
                     <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
                         <tr>
                             <td>ID</td>
@@ -67,7 +66,7 @@
                                             <form action="/admin/friendlylink/{{  $v->id  }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <input type="submit" id="sub" class="btn btn-danger" value="删除" onclick="return confirm('确认要删除该用户吗?');" >
+                                            <input type="submit" id="sub" class="btn btn-danger" value="删除"  onclick="return confirm('确认要删除该链接吗?');">
                                         </form>
                                     </div>
 
@@ -76,13 +75,13 @@
                                         <form action="/admin/friendlylink/disable/{{  $v->id   }}" method="post">
                                             {{ csrf_field() }}
 
-                                            <input type="submit" id="disable" class="btn btn-danger" value="禁用" onclick="return confirm('确认要禁用该链接吗?');" >
+                                            <input type="submit" id="disable" class="btn btn-info" value="禁用" onclick="return confirm('确认要禁用该链接吗?');" >
                                         </form>
                                         @else
                                         <form action="/admin/friendlylink/able/{{  $v->id   }}" method="post">
                                             {{ csrf_field() }}
 
-                                            <input type="submit" id="able" class="btn btn-danger" value="启用" onclick="return confirm('确认要启用该链接吗?');" >
+                                            <input type="submit" id="able" class="btn btn-success" value="启用" onclick="return confirm('确认要启用该链接吗?');" >
                                         </form>
                                         @endif
                                     </div>
@@ -92,8 +91,6 @@
                                             <input type="submit" class="btn btn-warning"  value="修改">
                                         </form>
                                     </div>
-
-
 
                                 </td>
                             </tr>
@@ -109,6 +106,8 @@
         </div>
     </div>
     <!-- 内容结束-->
+
+
 @endsection
 
 
