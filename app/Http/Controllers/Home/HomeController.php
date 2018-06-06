@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\FriendlyLink;
 use App\Models\Admin\Articles;
+use App\Models\Admin\Column;
 use App\Models\Home\Comment;
 use App\Models\Admin\User;
 use DB;
@@ -24,7 +25,7 @@ class HomeController extends Controller
         //分配友链数据
         $friend=FriendlyLink::all();
         $hot = Articles::orderBy('comment','desc') -> take(5) -> get();
-        $articles_new=Articles::orderBy('created_at','desc')->get();
+        $articles_new=Articles::orderBy('created_at','desc') -> take(10) ->get();
         foreach ($articles_new as $key => $value) {
             $content = $value['content'];
             $preg = "/<img(.*?)>/i"     ;
@@ -45,17 +46,17 @@ class HomeController extends Controller
     }
 
 
-     public function board()
+    public function board()
     {
         return view('home.board');
     }
-      public function about()
+    public function about()
     {
         return view('home.about');
     }
-      public function mood()
+    public function mood()
     {
-        $data = Articles::orderBy('created_at','desc')->get();
+        $data = Articles::orderBy('created_at','desc') -> paginate(5);
 
         foreach ($data as $k => $v) {
             $content=$v['content'];
@@ -66,21 +67,37 @@ class HomeController extends Controller
 
         return view('home.mood',['data' => $data]);
     }
-      public function article()
+    public function article()
     {
-        $data = Articles::orderBy('created_at','desc')->get();
+        $data = Articles::orderBy('created_at','desc')->paginate(10);
+        $hot = Articles::orderBy('comment','desc') -> take(5) -> get();
+        $column = Column::where('pid',0) -> get();
         foreach ($data as $k => $v) {
             $content=$v['content'];
             $preg = "/<img(.*?)>/i"     ;
             $v['content'] = preg_replace($preg,'', $content);
             $v['content'] = strip_tags($v['content']);
         }
-        return view('home.article',['data' => $data]);
+        return view('home.article',['data' => $data,'column' => $column,'hot' => $hot]);
     }
-      public function articledetail($id)
+    public function articles($id)
+    {
+        $data = Articles::where('lanmu',$id) -> orderBy('created_at','desc') -> paginate(10);
+        $hot = Articles::orderBy('comment','desc') -> take(5) -> get();
+        $column = Column::where('pid',0) -> get();
+        foreach ($data as $k => $v) {
+            $content=$v['content'];
+            $preg = "/<img(.*?)>/i"     ;
+            $v['content'] = preg_replace($preg,'', $content);
+            $v['content'] = strip_tags($v['content']);
+        }
+        return view('home.article',['data' => $data,'column' => $column,'hot' => $hot]);
+    }
+    public function articledetail($id)
     {
 
         $comment = Comment::where('aid',$id)->orderby('created_at','desc')->get();
+        $hot = Articles::orderBy('comment','desc') -> take(5) -> get();
         foreach ($comment as $k => $v) {
             $comment[$k] -> content = strip_tags($comment[$k] -> content);
         }
@@ -91,11 +108,16 @@ class HomeController extends Controller
         $prev = Articles::find($previd);
         $nextid=Articles::where('id', '>', $id)->min('id');
         $next = Articles::find($nextid);
-        return view('home.articledetail', ['detail'=>$detail,'prev'=>$prev,'next'=>$next,'comment'=>$comment,'collect'=>$collect]);
+        return view('home.articledetail', ['detail'=>$detail,'prev'=>$prev,'next'=>$next,'comment'=>$comment,'collect'=>$collect,'hot' => $hot]);
     }
 
     public function comment(Request $request,$id)
     {
+        $this -> validate($request,[
+                'content' => 'required',
+            ],[
+                'content.required' => '评论内容不能为空',
+            ]);
         $content = $request -> content;
         $comment = new Comment;
         $comment -> uid = session('homeuser') -> id;
@@ -106,7 +128,7 @@ class HomeController extends Controller
         $articles = Articles::where('id',$id) -> first();
         $articles -> comment = \DB::table('comment') -> where('aid', $id) -> count();
         $articles -> save();
-        return back();
+        return redirect('/home/articledetail/'.$id);
     }
 
     public function recomment(Request $request,$id)
@@ -129,9 +151,9 @@ class HomeController extends Controller
         $articles -> comment = \DB::table('comment') -> where('aid', $aid) -> count();
         $articles -> save();
         if ($res) {
-            return back() -> with('success','评论成功');
+            return redirect('/home/articledetail/'.$aid) -> with('success','评论成功');
         }else{
-            return back() -> with('error','评论失败');
+            return redirect('/home/articledetail/'.$aid) -> with('error','评论失败');
         }
 
         return view('home.articledetail', ['collect'=>$collect,'detail'=>$detail,'prev'=>$prev,'next'=>$next]);

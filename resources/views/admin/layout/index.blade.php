@@ -40,7 +40,6 @@
     .page ul,.page li{
         list-style-type: none;
     }
-
     .page li{
         float: left;
         height: 20px;
@@ -76,9 +75,6 @@
             color: #666666;
             cursor: default;
     }
-      #mydiv{
-        float:right;
-    }
 
 </style>
 </head>
@@ -89,26 +85,26 @@
 
     <!-- Header -->
     <div id="mws-header" class="clearfix">
-    
+
         <!-- Logo Container -->
         <div id="mws-logo-container">
-        
+
             <!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
             <div id="mws-logo-wrap">
                 <img src="/admin/images/logo.png" alt="mws admin">
             </div>
         </div>
-        
+
         <!-- User Tools (notifications, logout, profile, change password) -->
         <div id="mws-user-tools" class="clearfix">
-            
-           
+
+
             <!-- 用户信息 and functions section -->
             <div id="mws-user-info" class="mws-inset">
-            
+
                 <!-- 用户头像 -->
                 @if( session('adminUser') )
-            
+
             <div id="mws-user-photo">
                 <img src="{{$user = session('adminUser')->profile}}" alt="">
             </div>
@@ -116,8 +112,8 @@
             <div id="mws-user-photo">
                 <img src="/admin/example/profile.jpg" alt="User Photo">
             </div>
-            @endif 
-                
+            @endif
+
                 <!-- Username and Functions -->
                 <div id="mws-user-functions">
                     <div id="mws-username">
@@ -136,24 +132,24 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Start Main Wrapper -->
     <div id="mws-wrapper">
-    
+
         <!-- Necessary markup, do not remove -->
         <div id="mws-sidebar-stitch"></div>
         <div id="mws-sidebar-bg"></div>
-        
+
         <!-- Sidebar Wrapper -->
         <div id="mws-sidebar">
-        
+
             <!-- Hidden Nav Collapse Button -->
             <div id="mws-nav-collapse">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            
+
             <!-- Searchbox -->
             <div id="mws-searchbox" class="mws-inset">
                 <form action="typography.html">
@@ -161,11 +157,11 @@
                     <button type="submit" onclick="return false"><i class="icon-search"></i></button>
                 </form>
             </div>
-            
+
             <!-- Main Navigation -->
             <div id="mws-navigation">
                 <ul>
-                    
+
                     <li class="active">
                         <a href="#"><i class="icon-list"></i> 文章管理</a>
                         <ul>
@@ -206,23 +202,23 @@
                 </ul>
             </div>
         </div>
-        
+
         <!-- 内容开始-->
-        <div id="mws-container" class="clearfix"> 
+        <div id="mws-container" class="clearfix">
             <!-- 内容开始 -->
             <div class="container">
             @section('content')
             @show
             </div>
-            <!-- 内容结束-->   
+            <!-- 内容结束-->
         </div>
         <div id="mws-footer">
             Copyright Your Website 2012. All Rights Reserved.
         </div>
         <!-- 内容结束 -->
-     </div>   
+     </div>
          <!-- Footer -->
-        
+
     <!-- JavaScript Plugins -->
     <script src="/admin/js/libs/jquery-1.8.3.min.js"></script>
     <script src="/admin/js/libs/jquery.mousewheel.min.js"></script>

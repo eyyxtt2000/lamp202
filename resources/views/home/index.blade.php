@@ -33,6 +33,7 @@
         <div class="mt-20 bg-fff box-shadow radius mb-5">
             <div class="tab-category">
                 <a href=""><strong class="current">最新发布</strong></a>
+                <a href="/home/article" style="float:right;"><p style="line-height: 37px;">更多&gt;&gt;</p></a>
             </div>
         </div>
         <div class="art_content">
@@ -47,22 +48,14 @@
                     <div class="date_hits">
                         <span>{{$v->author}}</span>
                         <span>{{$v->created_at}}</span>
-                        <span><a href="">栏目名称等你联查遍历</a></span>
+                        <span><a href="/home/article/{{ $v -> column -> id }}">{{$v -> column -> cname}}</a></span>
                         <p class="commonts"><i class="Hui-iconfont" title="点击量"></i> <span class="cy_cmt_count">{{ $v -> comment }}</span></p>
                     </div>
                     <div class="desc">{!! $v->content !!}</div>
                 </li>
             @endforeach
             <!--遍历最新文章结束-->
-
             </ul>
-            <!--加载更多开始-->
-        <div class="text-c mb-20" id="moreBlog">
-            <a class="btn  radius btn-block " href="javascript:;" onclick="moreBlog();">点击加载更多</a>
-            <a class="btn  radius btn-block hidden" href="javascript:;">加载中……</a>
-        </div>
-            <!--加载更多结束-->
-
         </div>
   </div>
 

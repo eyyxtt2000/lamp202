@@ -84,6 +84,8 @@ class ArticlesController extends Controller
             //把图片的路径存到数据中
             $articles -> articles_image_path = $image_dir;
 
+        }else{
+            $articles -> articles_image_path = '/homeblog/temp/art.jpg';
         }
         //获取文章的作者
         $articles -> author = session('adminUser')->username;

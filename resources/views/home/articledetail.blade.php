@@ -1,17 +1,18 @@
 @extends('home.layout.index')
 @section('content')
-    @if (count($errors) > 0)
-        <script type="text/javascript">
-            layui.use(['layer', 'form'], function(){
-                var layer = layui.layer
-                ,form = layui.form;
-                @foreach ( $errors -> all() as $error )
-                    layer.msg('{{$error}}');
-                @endforeach
-            });
 
-        </script>
-    @endif
+@if (count($errors) > 0)
+    <script type="text/javascript">
+        layui.use(['layer', 'form'], function(){
+            var layer = layui.layer
+            ,form = layui.form;
+            @foreach( $errors -> all() as $error )
+                layer.msg('asd');
+            @endforeach
+        });
+
+    </script>
+@endif
 <nav class="breadcrumb">
   <div class="container"> <i class="Hui-iconfont"></i> <a href="/" class="c-primary">首页</a> <span class="c-gray en">&gt;</span>  <span class="c-gray">文章</span> <span class="c-gray en">&gt;</span>  <span class="c-gray">{{$detail->title}}</span></div>
 </nav>
@@ -22,13 +23,12 @@
             <div class="panel panel-default  mb-20">
                 <div class="panel-body pt-10 pb-10">
                     <h2 class="c_titile">{{$detail->title}}</h2>
-                    <p class="box_c"><span class="d_time">发布时间：{{$detail->created_at}}</span><span>编辑：<a href="mailto:wfyv@qq.com">{{$detail->author}}</a></span><span>阅读（88646）</span>
+                    <p class="box_c"><span class="d_time">发布时间：{{$detail->created_at}}</span><span>编辑：<a href="mailto:wfyv@qq.com">{{$detail->author}}</a></span>
                         @if( session('homeFlag') )
-
                             @if(!$collect)
-                            <a href="/home/addcollection/{{$detail->id}}"><span id="collect" > + 收藏</span></a>
+                            <a href="/home/addcollection/{{$detail->id}}" style="color:#999"><span id="collect" > + 收藏</span></a>
                           @else
-                          <a href="/home/delcollection/{{$detail->id}}"><span id="collect" > 取消收藏</span></a>
+                          <a href="/home/delcollection/{{$detail->id}}"><span id="collect" style="color:#999"> 取消收藏</span></a>
                          @endif
 
                             @else
@@ -95,13 +95,25 @@
                                             </header>
                                             <div class="comment-body">
                                                 <p>{{ $vv -> content }}</p>
+                                                <div style="float:right;margin-top:10px;">
+                                                    <a href="javascr:;">举报&nbsp;</a>
+                                                    <a href="javascr:;">顶一下&nbsp;</a>
+                                                    <a href="javascr:;">踩一下</a>
+                                                </div>
+
                                             </div>
+
                                         </div>
                                     </li>
                                     @endif
                                     @endforeach
                                 </ul>
-                                <button type="button" class="hf f-r btn btn-default size-S mt-10 huifu">回复</button>
+                                <div style="float:right;margin-top:10px;">
+                                    <a href="javascript:;" class="huifu">回复&nbsp;</a>
+                                    <a href="javascr:;">举报&nbsp;</a>
+                                    <a href="javascr:;">顶一下&nbsp;</a>
+                                    <a href="javascr:;">踩一下</a>
+                                </div>
                                 <form action="/home/comment/{{$v -> id}}" method="post" style="display:none;" class="fm">
                                     {{ csrf_field() }}
                                     <textarea class="textarea" name="content" style="height:100px;margin-top:10px;" > </textarea>
@@ -161,26 +173,12 @@
             </div>
             <div class="tab-category-item">
                 <ul class="index_recd">
+                    @foreach($hot as $k => $v)
                     <li>
-                        <a href="#">阻止a标签href默认跳转事件</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 </p>
+                        <a href="/home/articledetail/{{$v->id}}">{{ $v -> title}}</a>
+                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> {{ $v -> comment}} </p>
                     </li>
-                    <li>
-                        <a href="#">PHP面试题汇总</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 </p>
-                    </li>
-                    <li>
-                        <a href="#">阻止a标签href默认跳转事件</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 </p>
-                    </li>
-                    <li>
-                        <a href="#">阻止a标签href默认跳转事件</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 </p>
-                    </li>
-                    <li>
-                        <a href="#">PHP面试题汇总</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276 </p>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -209,7 +207,7 @@
     })
     $('.quxiao').click(function(){
         $('.fm').css('display','none');
-        $('.huifu').css('display','block');
+        $('.huifu').css('display','');
     })
 </script>
 @endsection

@@ -22,13 +22,59 @@
 <link rel="stylesheet" type="text/css" href="/homeblog/css/common.css" />
 <link rel="stylesheet" type="text/css" href="/homeblog/plugin/pifu/pifu.css" />
 <link rel="stylesheet" type="text/css" href="/homeblog/css/timeline.css">
+<link rel="stylesheet" type="text/css" href="/admin/css/page.css" media="screen">
 <!--引入layer弹窗开始做登录-->
 <link href="/homelog/layui/css/layui.css" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" type="text/css" href="/layui/css/layui.all.css">
 <script type="text/javascript" src="/layui/layui.js"></script>
 <!--引入layer弹窗结束做登录-->
+<style type="text/css">
+    .page ul,.page li{
+        list-style-type: none;
+    }
+    .page li{
+        float: left;
+        height: 40px;
+        padding: 0 12px;
+        display: block;
+        font-size: 16px;
+        font-weight:bold;
+        line-height: 40px;
+        text-align: center;
+        margin-top:40px;
+        cursor: pointer;
+        outline: none;
+        background-color: #eee;
+        color: #333;
+        text-decoration: none;
+        border-right: 1px solid #232323;
+        border-left: 1px solid #666666;
+        border-right: 1px solid rgba(0, 0, 0, 0.5);
+        border-left: 1px solid rgba(255, 255, 255, 0.15);
+        -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5), inset 0px 1px 0px rgba(255, 255, 255, 0.15);
+        -moz-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5), inset 0px 1px 0px rgba(255, 255, 255, 0.15);
+        box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5), inset 0px 1px 0px rgba(255, 255, 255, 0.15);
+    }
 
+    .page a{
+        color:#333;
+    }
+
+    .page .active{
+        background: #c5d52b;
+        color:#323232;
+    }
+
+    .page .disabled{
+            color: #bbb;
+            cursor: default;
+    }
+      #mydiv{
+        float:right;
+    }
+
+</style>
 
 <!--[if lt IE 9]>
 <link href="/staticRes/lib/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css" />

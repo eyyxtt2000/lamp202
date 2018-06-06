@@ -21,7 +21,7 @@ class LoginController extends Controller
     //登录页
     public function getLogin()
     {
-        
+
         return view('home.login.index');
     }
     //退出
@@ -33,25 +33,25 @@ class LoginController extends Controller
 
      public function getRegister()
     {
-        
+
         return view('home.login.register');
     }
       public function index()
     {
-        
+
        return view('home.index.index');
     }
 //
     public function postDologin(Request $request)
     {
-    
+
         //echo 1111111111;
-        
+
           //登录成功
-        
+
         $res = $request->   except('_token');
 //dd($res); 打印出用户填写的账号密码
-    
+
         $user = Users::where('username',$res['username'])->first();
 //dd($user);//通过传过来的姓名(未来设置成唯一)查找出该用户的所有信息
        if(!$user)
@@ -70,7 +70,7 @@ class LoginController extends Controller
 
                // $detail = UserDetail::find($id);
                 $detail=DB::table('users_detail')->where('uid','=',$id)->get();
-                //dd($detail[0]->status); 
+                //dd($detail[0]->status);
                 //dd($detail);//打印查到详细信息
                 $status=$detail[0]->status;
                 //dd($status);
@@ -83,18 +83,18 @@ class LoginController extends Controller
               //dd($abc);//true;
                 //dd($user->profile);
                 //dd(session('homeuser')['profile']);
-                
+
                 return redirect('/');
 
         }
 
-      
+
 
        //登录时间
-      
-       
- 
-     
+
+
+
+
         //验证密码
        /* if(Crypt::decrypt($user['password']) != trim($res['password']))
         {
@@ -104,7 +104,7 @@ class LoginController extends Controller
 
 
 
-   }    
+   }
         public function postDoregister(Request $request)
         {
            /* echo'在这里处理注册信息';
@@ -125,11 +125,11 @@ class LoginController extends Controller
             'repassword.same' => '密码不一致',
             ]);
 
-            
+
 
             $email = $request -> input('email','1453175095@qq.com');
             $pass = Hash::make($request -> input('password','123'));
-            $profile='/homeblog/img/qq.jpg';//给个默认头像
+            $profile='/homeblog/img/timg.jpg';//给个默认头像
             $token = str_random(50);
             $id = Users::insertGetId(['profile'=>$profile,'username'=>$email,'password'=>$pass,'token'=>$token]);
             UserDetail::insert(['email'=>$email,'uid'=>$id]);
@@ -149,10 +149,10 @@ class LoginController extends Controller
                 dd('注册失败');
             }
         }
- 
+
         public function jihuo(Request $request)
             {
-              
+
                // 接受id
                 $id = $request -> input('id','');
                 // 接受token
@@ -165,7 +165,7 @@ class LoginController extends Controller
                     dd('连接非法');
                 }
                 // dump($user);
-               
+
 
                 // 检测该账户是否激活
                 if($user -> active == 2){
@@ -194,22 +194,22 @@ class LoginController extends Controller
                     dd('链接失效，请联系客服');
                     exit;
                 }
-            } 
+            }
 
             public static function sendEmail($email,$id,$token)
             {
                 Mail::send('home.email.index', ['id' => $id,'token'=>$token,'email'=>$email], function ($m) use ($email) {
                     $m->to($email)->subject('【JDQS】官方激活邮件!');
                 });
-            }  
+            }
 
-           
-  
-    
 
-     
-        
- 
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.

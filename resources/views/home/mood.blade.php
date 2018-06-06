@@ -25,13 +25,16 @@
                     </div>
                     <div class="cd-timeline-content">
                         <h4>{{ $v -> title }}</h4>
-                        <p> {!! $v -> content !!} </p>
+                        <p style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;"> {!! $v -> content !!} </p>
                         <a href="/home/articledetail/{{ $v -> id }}" class="f-r"><input class="btn btn-success size-S" type="button" value="更多"></a>
                         <span class="cd-date">{{ $v -> created_at }}</span>
                     </div>
                 </div>
             @endforeach
         </div>
+            <div class="page dataTables_paginate paging_full_numbers">
+                {!! $data->render() !!}
+            </div>
     </div>
 
 </section>

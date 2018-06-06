@@ -24,18 +24,16 @@
                     <div class="date_hits">
                         <span>{{ $v -> author }}</span>
                         <span>{{ $v -> created_at }}</span>
-                        <span><a href="/article-lists/10.html">程序人生</a></span>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
-                        <p class="commonts"><i class="Hui-iconfont" title="点击量"></i> <span class="cy_cmt_count">20</span></p>
+                        <span><a href="/home/article/{{ $v -> column -> id }}">{{ $v -> column -> cname }}</a></span>
+                        <p class="commonts"><i class="Hui-iconfont" title="点击量"></i> <span class="cy_cmt_count">{{ $v -> comment }}</span></p>
                     </div>
                     <div class="desc">{!! $v -> content !!}</div>
                 </li>
                 @endforeach
             </ul>
-        <div class="text-c mb-20" id="moreBlog">
-            <a class="btn  radius btn-block " href="javascript:;" id="more" data-status="1">点击加载更多</a>
-            <a class="btn  radius btn-block hidden" href="javascript:;">加载中……</a>
-        </div>
+            <div class="page dataTables_paginate paging_full_numbers">
+                {!! $data->render() !!}
+            </div>
   </div>
 
   <!--right-->
@@ -44,10 +42,9 @@
     <!--导航-->
     <div class="panel panel-primary mb-20">
             <div class="panel-body">
-                <input class="btn btn-primary radius nav-btn" type="button" value="杂谈">
-                <input class="btn btn-primary-outline radius nav-btn" type="button" value="java">
-                <input class="btn btn-primary-outline radius nav-btn" type="button" value="框架">
-                <input class="btn btn-primary-outline radius nav-btn" type="button" value="服务域名">
+                @foreach($column as $k => $v)
+                <a href="/home/article/{{ $v -> id }}" class="btn btn-primary radius nav-btn">{{ $v -> cname }}</a>
+                @endforeach
             </div>
         </div>
 
@@ -58,26 +55,12 @@
             </div>
             <div class="tab-category-item">
                 <ul class="index_recd">
+                    @foreach($hot as $k => $v)
                     <li>
-                        <a href="#">阻止a标签href默认跳转事件</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
+                        <a href="/home/articledetail/{{$v->id}}">{{ $v -> title}}</a>
+                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> {{ $v -> comment}} </p>
                     </li>
-                    <li>
-                        <a href="#">PHP面试题汇总</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
-                    </li>
-                    <li>
-                        <a href="#">阻止a标签href默认跳转事件</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
-                    </li>
-                    <li>
-                        <a href="#">阻止a标签href默认跳转事件</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
-                    </li>
-                    <li>
-                        <a href="#">PHP面试题汇总</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 276° </p>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

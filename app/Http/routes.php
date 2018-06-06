@@ -75,6 +75,8 @@ route::get('/home/board','Home\HomeController@board');
 route::get('/home/about','Home\HomeController@about');
 //前台文章列表路由
 route::get('/home/article','Home\HomeController@article');
+//前台各文章列表路由
+route::get('/home/article/{id}','Home\HomeController@articles');
 //前台留言板路由
 route::get('/home/mood','Home\HomeController@mood');
 //前台文章详情表路由
