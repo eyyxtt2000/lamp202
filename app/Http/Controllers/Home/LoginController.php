@@ -129,7 +129,7 @@ class LoginController extends Controller
 
             $email = $request -> input('email','1453175095@qq.com');
             $pass = Hash::make($request -> input('password','123'));
-            $profile='/homeblog/img/qq.jpg';//给个默认头像
+            $profile='/homeblog/img/timg.jpg';//给个默认头像
             $token = str_random(50);
             $id = Users::insertGetId(['profile'=>$profile,'username'=>$email,'password'=>$pass,'token'=>$token]);
             UserDetail::insert(['email'=>$email,'uid'=>$id]);

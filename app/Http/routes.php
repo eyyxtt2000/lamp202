@@ -108,4 +108,7 @@ Route::get('/home/userinfo/userinfo',function(){
 //添加收藏de 路由
 Route::get('/home/addcollection/{id}','Home\CollectController@add');
 //删除取消收藏的路由
-Route::get('home/delcollection/{id}','Home\CollectController@del');
+Route::get('/home/delcollection/{id}','Home\CollectController@del');
+//layer上传的路由
+Route::post('/home/ler/uploads','Home\LerController@uploads');
+
