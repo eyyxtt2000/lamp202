@@ -129,8 +129,6 @@
             </div>
             <div class="line"></div>
             <!--用于评论-->
-            <form method="post">
-            {{ csrf_field() }}
             <div class="mt-20" id="ct">
                 <div id="err" class="Huialert Huialert-danger hidden radius">成功状态提示</div>
                  <div class="col-md-10" name="comment" style="height:280px" >
@@ -160,10 +158,9 @@
                     </div>
                     </div>  <div class="wangEditor-container"><div class="wangEditor-menu-container clearfix" style="position: static; top: auto; width: 100%;"><div class="menu-group clearfix"><div class="menu-item clearfix"><a href="#" tabindex="-1"><i class="wangeditor-menu-img-terminal"></i></a><a href="#" tabindex="-1" class="selected" style="display: none;"><i class="wangeditor-menu-img-terminal"></i></a></div><div class="menu-item clearfix"><a href="#" tabindex="-1"><i class="wangeditor-menu-img-quotes-left"></i></a><a href="#" tabindex="-1" class="selected" style="display: none;"><i class="wangeditor-menu-img-quotes-left"></i></a></div><div class="menu-item clearfix"><a href="#" tabindex="-1"><i class="wangeditor-menu-img-bold"></i></a><a href="#" tabindex="-1" class="selected" style="display: none;"><i class="wangeditor-menu-img-bold"></i></a></div></div><div class="menu-group clearfix"><div class="menu-item clearfix"><a href="#" tabindex="-1"><i class="wangeditor-menu-img-picture"></i></a><a href="#" tabindex="-1" class="selected" style="display: none;"><i class="wangeditor-menu-img-picture"></i></a></div><div class="menu-item clearfix"><a href="#" tabindex="-1"><i class="wangeditor-menu-img-happy"></i></a><a href="#" tabindex="-1" class="selected" style="display: none;"><i class="wangeditor-menu-img-happy"></i></a></div></div><div class="menu-group clearfix"><div class="menu-item clearfix"><a href="#" tabindex="-1"><i class="wangeditor-menu-img-ccw"></i></a><a href="#" tabindex="-1" class="selected" style="display: none;"><i class="wangeditor-menu-img-ccw"></i></a></div><div class="menu-item clearfix"><a href="#" tabindex="-1"><i class="wangeditor-menu-img-enlarge2"></i></a><a href="#" tabindex="-1" class="selected" style="display: none;"><i class="wangeditor-menu-img-shrink2"></i></a></div></div></div></div>
                 <div class="text-r mt-10">
-                    <input class="btn btn-info tjhf" type="submit" value="提交">
+                    <input class="btn btn-info" id="tjhf" type="submit" value="提交">
                 </div>
             </div>
-            </form>
         </div>
                 </div>
             </div>
@@ -202,11 +199,6 @@
 </section>
 <script type="text/javascript" src="/layui/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
     $('.huifu').click(function(){
         var n = $('.huifu').index(this);
         $('.fm').css('display','none');
@@ -217,15 +209,17 @@
         $('.fm').css('display','none');
         $('.huifu').css('display','');
     })
-    $('.tjhf').click(function(){
-        var content = UE.getEditor('container');
+    $('#tjhf').click(function(){
+        var content = UE.getEditor('container').getContent();
+        console.log(content);
         var id = $('#articles_id').html();
-        $.post('/home/articledetail/'+id,content,function(msg){
-            if(msg == 'true'){
+        $.get('/home/comment/'+id,{'content':content},function(data){
+            if (data == 1) {
                 alert('评论成功');
             }else{
                 alert('评论失败');
-        },'html');
+            }
+        });
     })
 </script>
 @endsection

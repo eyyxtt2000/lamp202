@@ -82,8 +82,8 @@ route::get('/home/mood','Home\HomeController@mood');
 //前台文章详情表路由
 route::get('/home/articledetail/{id}','Home\HomeController@articledetail');
 // 前台评论
-route::post('/home/articledetail/{id}','Home\HomeController@comment');
-route::post('/home/comment/{id}','Home\HomeController@recomment');
+route::get('/home/comment/{id}','Home\HomeController@comment');
+route::post('/home/recomment/{id}','Home\HomeController@recomment');
 
 //前台登录
 Route::controller('/home/login','Home\LoginController');

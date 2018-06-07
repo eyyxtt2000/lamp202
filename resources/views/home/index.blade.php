@@ -206,15 +206,10 @@
             </div>
         </div>
 
-
-
-
   </div>
 
 </section>
 @endsection
-
-
 
 @section('title')
     英雄联盟

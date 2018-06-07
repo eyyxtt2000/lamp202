@@ -50,7 +50,7 @@ class LoginController extends Controller
           //登录成功
 
         $res = $request->   except('_token');
-//dd($res); 打印出用户填写的账号密码
+//dd($res); //打印出用户填写的账号密码
 
         $user = Users::where('username',$res['username'])->first();
 //dd($user);//通过传过来的姓名(未来设置成唯一)查找出该用户的所有信息
@@ -58,7 +58,7 @@ class LoginController extends Controller
         {
             return back()->withErrors('没有这个用户') -> withInput();
         }
-      $id=$user->id;//得到该用户的id
+       $id=$user->id;//得到该用户的id
 
         $pwd=Users::where('id',$id)->where('password',$res['password'])->first();
 //dd($pwd);//判断id下的用户名和密码是否同时一致
@@ -69,7 +69,10 @@ class LoginController extends Controller
         }else{
 
                // $detail = UserDetail::find($id);
+
                 $detail=DB::table('users_detail')->where('uid','=',$id)->get();
+
+                //dd($detail);
                 //dd($detail[0]->status);
                 //dd($detail);//打印查到详细信息
                 $status=$detail[0]->status;
@@ -79,6 +82,7 @@ class LoginController extends Controller
                 }
                 session(['homeFlag'=>true]);
                 session(['homeuser'=>$user]);
+                //dd(session('homeuser'));
                $abc= DB::table('history')->insert(['uid'=>$user->id,'loginTime'=>time()]);
               //dd($abc);//true;
                 //dd($user->profile);
@@ -202,13 +206,6 @@ class LoginController extends Controller
                     $m->to($email)->subject('【JDQS】官方激活邮件!');
                 });
             }
-
-
-
-
-
-
-
 
 
     /**

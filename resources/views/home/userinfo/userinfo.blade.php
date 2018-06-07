@@ -85,7 +85,7 @@
                             <script>
                             layui.use('upload', function(){
                               var upload = layui.upload;
-                               
+                               //alert(upload);
                               //执行实例
                               var uploadInst = upload.render({
                                 elem: '#test1' //绑定元素

@@ -15,6 +15,6 @@
       <br>
       <p>你的登录邮箱为:{{$email}},请点击以下链接激活账号,以便接收重要的提醒信息:</p>
       <br>
-      <a href="http://lamp200.com/home/jihuo?id={{$id}}&token={{$token}}">http://www.lamp200.com/home/jihuo?id={{$id}}&token={{$token}}</a>
+      <a href="http://www.lamp202.com/home/jihuo?id={{$id}}&token={{$token}}">http://www.lamp200.com/home/jihuo?id={{$id}}&token={{$token}}</a>
     </body>
 </html>

@@ -113,12 +113,13 @@ class HomeController extends Controller
 
     public function comment(Request $request,$id)
     {
+        // dd($_POST);
         $this -> validate($request,[
                 'content' => 'required',
             ],[
                 'content.required' => '评论内容不能为空',
             ]);
-        $content = $_POST['content'];
+        $content = $_GET['content'];
         $comment = new Comment;
         $comment -> uid = session('homeuser') -> id;
         $comment -> content = $content;
@@ -129,9 +130,9 @@ class HomeController extends Controller
         $articles -> comment = \DB::table('comment') -> where('aid', $id) -> count();
         $res2 = $articles -> save();
         if ($res1 && $res2) {
-            echo 'true';
+            return 1;
         }else{
-            echo 'false';
+            return 2;
         }
     }
 

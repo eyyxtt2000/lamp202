@@ -1,7 +1,7 @@
 
 <!DOCTYPE HTML>
 <html>
-<title>留言板 — 一个站在java开发之路上的草根程序员个人博客网站</title>
+<title>留言板 — 个人博客</title>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,12 +35,19 @@
             <a class="logo navbar-logo-m visible-xs" href="index.html">Lao王博客</a>
             <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:void(0);" onclick="showSide();">&#xe667;</a>
             <nav class="nav navbar-nav nav-collapse w_menu" role="navigation">
-                <ul class="cl">
+                 <ul class="cl">
                     <li class="active"> <a href="/" data-hover="首页">首页</a> </li>
+<<<<<<< HEAD
           <li> <a href="/home/about" data-hover="关于我们">关于我们</a> </li>
           <li> <a href="/home/mood" data-hover="妙语连珠">妙语连珠</a> </li>
           <li><a href="/home/article" data-hover="文章阅读">文章阅读</a></li>
           <li> <a href="/home/board" data-hover="留言板">留言板</a> </li>
+=======
+                    <li> <a href="/home/about" data-hover="关于我们">关于我们</a> </li>
+                    <li> <a href="/home/mood" data-hover="妙语连珠">妙语连珠</a> </li>
+                    <li><a href="/home/article" data-hover="文章阅读">文章阅读</a></li>
+                    <li> <a href="/home/board" data-hover="留言板">留言板</a> </li>
+>>>>>>> origin/zzm
                 </ul>
             </nav>
               <nav class="navbar-nav navbar-userbar hidden-xs hidden-sm " style="top: 0;">
@@ -62,7 +69,7 @@
                               {{session('homeuser')['username']}}
 
 
-                           <a href="javascript:;" ><img class="avatar radius"  src="{{ session('homeuser')['profile'] }}"  alt="博客"></a>
+                           <a  href="/home/userinfo/userinfo" ><img class="avatar radius"  src="{{ session('homeuser')['profile'] }}"  alt="博客"></a>
                            <ul class="dropDown-menu menu radius box-shadow">
                                <li><a href="/home/logout">退出</a></li>
                            </ul>
