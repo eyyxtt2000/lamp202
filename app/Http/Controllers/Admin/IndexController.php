@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
-
+use Hash;
 class IndexController extends Controller
 {
     /**
@@ -29,24 +29,13 @@ class IndexController extends Controller
     public function writepwd(Request $request)
     {
 
-        if( session() ){
+
+       if( session() ){
             $id = session('adminUser')->id;
+
          }
-
-        /*  $this->validate($request,[
-
-            'password' => 'required|between:6,12',
-            'repassword' => 'required|same:password',
-
-
-            ],[
-
-            'password.required' => '密码必须输入',
-            'repassword.required' => '确认密码必须输入',
-            'password.between' => '密码格式不正确',
-            'repassword.same' => '密码不一致',
-
-            ]);*/
+ 
+       
 
         return view('admin.resetpwd.resetpwd',['id'=>$id,'title'=>'修改密码']);
 
@@ -60,6 +49,7 @@ class IndexController extends Controller
    public function resetpwd(Request $request,$id)
     {
 
+
         $oldpwd=$request->input('oldpwd');
         $newpwd=$request->input('newpwd');
         $confirmpwd=$request->input('confirmpwd');
@@ -71,7 +61,9 @@ class IndexController extends Controller
         $user=User::where('id',$id)->first();
         $datapwd=$user->password;
 
-        if($datapwd!=$oldpwd)
+        $res=Hash::check($oldpwd,$datapwd);
+
+        if(!$res)
         {
             return back()->withInput();
         }
@@ -81,8 +73,9 @@ class IndexController extends Controller
             return back()->withInput();
         }
 
-        $user->password=$newpwd;
+        $user->password=Hash::make($newpwd);
         $user->save();
+        return redirect('/admin/login');
 
     }
 

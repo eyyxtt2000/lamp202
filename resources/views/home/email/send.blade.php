@@ -12,7 +12,7 @@
 <tr>
 <td>
 <div style="padding:25px 35px 40px; background-color:#fff;">
-<h2 style="margin: 5px 0px; "><font color="#333333" style="line-height: 20px; "><font style="line-height: 22px; " size="4">亲爱的 { 用户 }：</font></font></h2>
+<h2 style="margin: 5px 0px; "><font color="#333333" style="line-height: 20px; "><font style="line-height: 22px; " size="4">亲爱的用户：</font></font></h2>
 <p>首先感谢您加入掘地求升！
 激活邮件已经成功发送到您的邮箱,请前往注册邮箱进行激活操作!
 请您在发表言论时，遵守当地法律法规。

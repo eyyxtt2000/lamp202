@@ -20,8 +20,9 @@
          <span > <i class="icon-magic"></i>{{ $title }}</span>
       </div>
       <div class="mws-panel-body no-padding">
- <form class="mws-form" action="{{url('admin/users')}}" method="post" enctype="multipart/form-data">
+ <form class="mws-form" action="/admin/users/{{$id}}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
+        {{ method_field('PUT') }}
 
             <div class="mws-form-block">
                 <div class="mws-form-row" style="width: 800px;">

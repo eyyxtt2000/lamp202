@@ -110,7 +110,7 @@
                 @if( session('adminUser') )
             
             <div id="mws-user-photo">
-                <img src="{{$user = session('adminUser')->profile}}" alt="">
+                <img style="width:32px;height:32px" src="{{$user = session('adminUser')->profile}}" alt="">
             </div>
             @else
             <div id="mws-user-photo">
@@ -129,7 +129,7 @@
                     </div>
                     <ul>
                         <li><a href="#">头像</a></li>
-                        <li><a href="/admin/resetpwd">修改密码</a></li>
+                        <li><a href="/admin/repwd">修改密码</a></li>
                         <li><a href="/admin/logout">退出</a></li>
                     </ul>
                 </div>

@@ -95,10 +95,9 @@
                                 ,field:'profile'
                                 ,done: function(res){
                                   //上传完毕回调
-                                 if(res.code==1){
-
-                                    layer.msg(res.msg);
+                                 if(res.code==1){  
                                     $("#pic").attr('src',res.data.src);
+                                     layer.msg(res.msg);
                                  } else{
                                     layer.msg(res.msg);
                                  }   

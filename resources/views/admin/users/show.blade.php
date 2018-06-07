@@ -10,51 +10,54 @@
                     </div>
                     <div class="mws-panel-body no-padding">
 
-         <table  cellspacing="0px"width="964px"  >
-            <caption >   </caption>
-            <tr bgcolor="#00FFFF">
-                <th rowspan="2">
-                    <img src="{{$data->profile}}"  class="img-circle img-thumbnail img-responsive" style="width:200px">
+         <table  cellspacing="0px"width="953.2px" height="605px"  style="background: url('/homeblog/temp/big.jpg'); " >
+           
+            <tr >
+              
+                <th  height="50px" rowspan="2">
+                    <img src="{{$data->profile}}"  class="img-circle img-thumbnail img-responsive" style="width:127px;height:127px">
                 </th>
-               <th colspan="2">{{'姓名:'.$data->username}}</th>
+               <th height="50px"  colspan="2"><font style="font-family:STFangsong" color="#006600"  size="5">{{'姓名:'.$data->username}}</font></th>
+              
             </tr>
-              <tr>
-                <th>身份</th>
+
+              <tr >
+                <th ><font style="font-family:STFangsong" color="#006600"  size="4">身份</font></th>
                 @if($data->identity==1)
-                    <th colspan="2">管理员</th>
+                    <th  colspan="2"><font style="font-family:STFangsong" color="#006600"  size="4">管理员</font></th>
                  @else
-                    <th colspan="2">用户</th>
+                    <th   colspan="2"><font style="font-family:STFangsong" color="#006600"  size="4">用户</font></th>
                  @endif
             </tr>
             <tr>
-                <th>状态</th>
+                <th ><font style="font-family:STFangsong" color="#006600"  size="4">状态</font></th>
                 @if($data->usersdetail['status']==1)
-                 <th colspan="2">激活状态</th>
+                 <th  colspan="2"><font style="font-family:STFangsong" color="#006600"  size="4">激活状态</font></th>
                  @else
-                    <th colspan="2">黑名单</th>
+                    <th   colspan="2"><font style="font-family:STFangsong" color="#006600"  size="4">黑名单</font></th>
                  @endif
             </tr>
             <tr>
-                <th>性别</th>
-                <th>{{$data->usersdetail['sex']}}</th>
+                <th  height="50px" ><font style="font-family:STFangsong" color="#006600"  size="4">性别</font></th>
+                <th  height="50px" ><font style="font-family:STFangsong" color="#006600"  size="4">{{$data->usersdetail['sex']}}</font></th>
             </tr>
             <tr>
-                <th >邮箱</th>
-                <th colspan="2">{{$data->usersdetail['email']}}</th>
+                <th   ><font style="font-family:STFangsong" color="#006600"  size="4">邮箱</font></th>
+                <th   colspan="2"><font style="font-family:STFangsong" color="#006600"  size="4">{{$data->usersdetail['email']}}</font></th>
 
             </tr>
             <tr>
-                <th>电话</th>
-                <th colspan="2">{{$data->usersdetail['phone']}}</th>
+                <th height="50px" ><font style="font-family:STFangsong" color="#006600"  size="4">电话</font></th>
+                <th height="50px"  colspan="2"><font style="font-family:STFangsong" color="#006600"  size="4">{{$data->usersdetail['phone']}}</font></th>
             </tr>
             <tr>
-                <th>地址</th>
-                 <th colspan="2">{{$data->usersdetail['addr']}}</th>
+                <th ><font style="font-family:STFangsong" color="#006600"  size="4">地址</font></th>
+                 <th colspan="2"><font style="font-family:STFangsong" color="#006600"  size="4">{{$data->usersdetail['addr']}}</font></th>
             </tr>
 
              <tr>
-                <th>积分</th>
-                 <th colspan="2">{{$data->usersdetail['score']}}</th>
+                <th  height="50px" ><font style="font-family:STFangsong" color="#006600"  size="4">积分</font></th>
+                 <th  height="50px" colspan="2"><font style="font-family:STFangsong" color="#006600"  size="4">{{$data->usersdetail['score']}}</font></th>
             </tr>
 
         </table>

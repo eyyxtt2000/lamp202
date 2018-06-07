@@ -8,9 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Admin\Usersdetail;
+use Hash;
 
-/*use Illuminate\Foundation\Auth\AuthenticatesUsers;//引入完整的跳转回父页
-use Illuminate\Support\Facades\URL;*/
 class LoginController extends Controller
 {
     /**
@@ -33,18 +32,19 @@ class LoginController extends Controller
 
        $formu= $request->input('username');
        $formp= $request->input('password');
-
+     
 
         $user = User::where('username',$formu)->first();
-
+    
           //如果数据库中没有此用户，返回登录页面
         if(!$user)
         {
             return back()->withErrors('没有这个用户') -> withInput();
         }
-         $pwd=User::where('password',$formp)->first();
 
-        if(!$pwd)
+        $res=Hash::check($formp,$user['password']);
+        
+        if(!$res)
         {
              return back()->withErrors('用户密码错误') -> withInput();
         }

@@ -12,7 +12,7 @@
 <tr>
 <td>
 <div style="padding:25px 35px 40px; background-color:#fff;">
-<h2 style="margin: 5px 0px; "><font color="#333333" style="line-height: 20px; "><font style="line-height: 22px; " size="4">亲爱的 {email}：</font></font></h2>
+<h2 style="margin: 5px 0px; "><font color="#333333" style="line-height: 20px; "><font style="line-height: 22px; " size="4">亲爱的用户：</font></font></h2>
 <p>注册激活失败,请联系在线客服或管理员重新激活！
 您在激活失败时有以下原因:链接非法,或链接失效.
 掘地求升，聚天下。 http://www.lamp200.com

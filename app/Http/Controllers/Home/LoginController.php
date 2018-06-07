@@ -58,12 +58,14 @@ class LoginController extends Controller
         {
             return back()->withErrors('没有这个用户') -> withInput();
         }
-       $id=$user->id;//得到该用户的id
+      $id=$user->id;
+        $inputpwd=$request['password'];
+       $pwd=$user['password'];//获得用户的密码
+       $abc=Hash::check($inputpwd,$pwd);
+       
+        //判断id下的用户名和密码是否同时一致
 
-        $pwd=Users::where('id',$id)->where('password',$res['password'])->first();
-//dd($pwd);//判断id下的用户名和密码是否同时一致
-
-        if($pwd==null)
+        if(!$abc)
         {
              return back()->withErrors('用户密码错误') -> withInput();
         }else{

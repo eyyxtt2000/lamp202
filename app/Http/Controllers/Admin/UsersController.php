@@ -155,6 +155,7 @@ class UsersController extends Controller
     {
         $data = User::find($id);
         $data2 = $data -> usersdetail -> where('uid',$id) -> first();
+
         return view('admin.users.edit',['id' => $id,'title' => '修改用户信息','data' => $data,'data2' => $data2]);
     }
 
@@ -187,10 +188,10 @@ class UsersController extends Controller
         $user = User::find($id);
         $user -> username = $data['username'];
         $user -> identity = $data['identity'];
-        $user -> save();
+       $user -> save();
 
         $user2 = Usersdetail::where('uid',$id) -> first();
-
+       
         $user2 -> addr = $data['addr'];
         $user2 -> score = $data['score'];
         $user2 -> email = $data['email'];

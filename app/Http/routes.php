@@ -45,7 +45,7 @@ Route::get('/admin/logout','Admin\LoginController@logout');
 Route::resource('/admin/articles','Admin\ArticlesController');
 
 //后台头部显示修改登陆后管理人员的密码
-Route::get('/admin/resetpwd','Admin\IndexController@writepwd');
+Route::get('/admin/repwd','Admin\IndexController@writepwd');
 
 //跳转到执行后台修改密码的控制器方法
 Route::post('/admin/resetpwd/{id}','Admin\IndexController@resetpwd');
