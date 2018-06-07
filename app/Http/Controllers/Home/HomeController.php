@@ -118,17 +118,21 @@ class HomeController extends Controller
             ],[
                 'content.required' => '评论内容不能为空',
             ]);
-        $content = $request -> content;
+        $content = $_POST['content'];
         $comment = new Comment;
         $comment -> uid = session('homeuser') -> id;
         $comment -> content = $content;
         $comment -> aid = $id;
         $comment -> pid = 0;
-        $comment -> save();
+        $res1 = $comment -> save();
         $articles = Articles::where('id',$id) -> first();
         $articles -> comment = \DB::table('comment') -> where('aid', $id) -> count();
-        $articles -> save();
-        return redirect('/home/articledetail/'.$id);
+        $res2 = $articles -> save();
+        if ($res1 && $res2) {
+            echo 'true';
+        }else{
+            echo 'false';
+        }
     }
 
     public function recomment(Request $request,$id)

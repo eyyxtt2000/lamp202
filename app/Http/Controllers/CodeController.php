@@ -12,7 +12,7 @@ use Session;
 
 class CodeController extends Controller
 {
-    
+
         public function makecode()
         {
         // 生成验证码图片的Builder对象，配置相应属性
@@ -28,7 +28,6 @@ class CodeController extends Controller
         // 生成图片
         header("Cache-Control: no-cache, must-revalidate");
         header('Content-Type: image/jpeg');
-        dd(session('code'));
         return $builder->output();
         }
 
@@ -47,10 +46,8 @@ class CodeController extends Controller
      */
     public function store(Request $request)
     {
-        // 验证验证码 
+        // 验证验证码
         $res= checkcode($request->input('code'));
-        dump($res);
-        dd($request->all());
     }
 
     /**
@@ -63,7 +60,7 @@ class CodeController extends Controller
     {
         //jiazai
         //echo'1111';
-      
+
         return view('admin.show');
     }
 
