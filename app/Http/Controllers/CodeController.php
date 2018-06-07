@@ -28,7 +28,7 @@ class CodeController extends Controller
         // 生成图片
         header("Cache-Control: no-cache, must-revalidate");
         header('Content-Type: image/jpeg');
-        dd(session('code'));
+        //dd(session('code'));
         return $builder->output();
         }
 

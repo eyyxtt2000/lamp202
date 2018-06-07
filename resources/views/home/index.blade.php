@@ -47,7 +47,7 @@
                     <div class="date_hits">
                         <span>{{$v->author}}</span>
                         <span>{{$v->created_at}}</span>
-                        <span><a href="">栏目名称等你联查遍历</a></span>
+                         <span><a href="/home/article/{{ $v -> column -> id }}">{{$v -> column -> cname}}</a></span>
                         <p class="commonts"><i class="Hui-iconfont" title="点击量"></i> <span class="cy_cmt_count">{{ $v -> comment }}</span></p>
                     </div>
                     <div class="desc">{!! $v->content !!}</div>
